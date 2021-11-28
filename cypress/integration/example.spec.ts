@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/triple-slash-reference */
 /// <reference types="Cypress" />
 /// <reference path="../support/index.d.ts" />
 
