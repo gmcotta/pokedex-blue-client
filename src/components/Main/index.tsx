@@ -1,7 +1,9 @@
+import * as S from './styles';
+
 const Main = () => (
-  <main>
-    <h1>Main</h1>
-  </main>
+  <S.Wrapper>
+    <S.Heading>Main</S.Heading>
+  </S.Wrapper>
 );
 
 export default Main;
