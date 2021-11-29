@@ -1,9 +1,15 @@
+import Pokeball from 'components/Pokedex/Pokeball';
 import * as S from './styles';
 
 const SplashTemplate = () => {
   return (
     <S.Wrapper>
-      <h1>Splash</h1>
+      <S.LowerScreen>
+        <S.PokeballDecoration>
+          <Pokeball />
+        </S.PokeballDecoration>
+      </S.LowerScreen>
+      <S.UpperScreen />
     </S.Wrapper>
   );
 };
