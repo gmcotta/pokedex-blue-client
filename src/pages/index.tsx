@@ -1,5 +1,5 @@
-import Main from 'components/Main';
+import SplashTemplate from 'templates/Splash';
 
 export default function Home() {
-  return <Main />;
+  return <SplashTemplate />;
 }
