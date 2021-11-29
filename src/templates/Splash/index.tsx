@@ -8,7 +8,13 @@ const SplashTemplate = () => {
         <S.PokeballDecoration>
           <Pokeball />
         </S.PokeballDecoration>
-        {/* <Pokeball /> */}
+        <S.RectangleButton position="topLeft" />
+        <S.RectangleButton position="topRight" />
+        <S.RightButtonsWrapper>
+          <S.SmallCircleButton />
+          <S.BigCircleButton />
+          <S.SmallCircleButton />
+        </S.RightButtonsWrapper>
       </S.LowerScreen>
       <S.UpperScreen />
     </S.Wrapper>
