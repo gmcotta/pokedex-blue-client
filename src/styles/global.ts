@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   *,
@@ -22,11 +22,13 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 
-  body {
-    line-height: 1.5;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
+  ${({ theme }) => css`
+    body {
+      line-height: 1.5;
+      font-family: ${theme.font.family};
+      -webkit-font-smoothing: antialiased;
+    }
+  `}
 
   img,
   picture,
