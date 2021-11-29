@@ -5,9 +5,9 @@ const SplashTemplate = () => {
   return (
     <S.Wrapper>
       <S.LowerScreen>
-        <S.PokeballDecoration>
-          <Pokeball />
-        </S.PokeballDecoration>
+        <Pokeball />
+        {/* <S.PokeballDecoration>
+        </S.PokeballDecoration> */}
       </S.LowerScreen>
       <S.UpperScreen />
     </S.Wrapper>

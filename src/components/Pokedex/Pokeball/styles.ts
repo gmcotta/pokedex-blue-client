@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 
 export const OutterBall = styled.div`
   ${({ theme }) => css`
-    width: 40rem;
-    height: 40rem;
+    width: min(80vw, 40rem);
+    height: min(80vw, 40rem);
     background-color: ${theme.colors.pokedex.secondary};
     border-radius: 50%;
     position: relative;
@@ -14,8 +14,8 @@ export const OutterBall = styled.div`
 
     &::after {
       content: ' ';
-      width: 40rem;
-      height: 3.2rem;
+      width: min(80vw, 40rem);
+      height: min(5vw, 3.2rem);
       background-color: ${theme.colors.pokedex.primary};
       position: absolute;
     }
@@ -25,11 +25,11 @@ export const OutterBall = styled.div`
 export const InnerBall = styled.div`
   ${({ theme }) => css`
     box-sizing: content-box;
-    width: 10rem;
-    height: 10rem;
+    width: min(20vw, 10rem);
+    height: min(20vw, 10rem);
     background-color: ${theme.colors.pokedex.secondary};
     border-radius: 50%;
-    border: 3.2rem solid ${theme.colors.pokedex.primary};
+    border: min(5vw, 3.2rem) solid ${theme.colors.pokedex.primary};
     z-index: 2;
   `}
 `;
