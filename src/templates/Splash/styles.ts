@@ -29,15 +29,16 @@ export const PokeballDecoration = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 120vh;
-    min-width: 120vh;
+    width: min(102vw, 80rem);
+    height: min(102vw, 80rem);
     background-color: transparent;
     border-radius: 50%;
-    border: 3.2rem solid ${theme.colors.pokedex.secondary};
+    border: min(5vw, 3.2rem) solid ${theme.colors.pokedex.secondary};
+    /* margin: 1.6rem; */
 
     &::after {
       content: '';
-      width: 3.2rem;
+      width: min(5vw, 3.2rem);
       height: 120vh;
       background-color: ${theme.colors.pokedex.secondary};
       position: absolute;
