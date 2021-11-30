@@ -1,10 +1,32 @@
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.main`
-  ${({ theme }) => css`
+export const Container = styled.main`
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+`;
+
+export const Button = styled.button`
+  position: absolute;
+  bottom: 10%;
+`;
+
+type AnimationProps = {
+  animationTriggered: boolean;
+};
+
+export const Device = styled.section<AnimationProps>`
+  ${({ theme, animationTriggered }) => css`
+    width: 100%;
     height: 200%;
     background-color: ${theme.colors.pokedex.primary};
-    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    ${animationTriggered &&
+    css`
+      bottom: -100%;
+      transition: bottom 500ms ease-in-out;
+    `}
   `}
 `;
 
@@ -20,23 +42,39 @@ export const UpperScreen = styled.section`
   `}
 `;
 
-export const Display = styled.div`
-  ${({ theme }) => css`
+export const Display = styled.div<AnimationProps>`
+  ${({ theme, animationTriggered }) => css`
     background-color: ${theme.colors.pokedex.screenOff};
     border-radius: 0.8rem;
     border: min(5vh, 3.2rem) solid ${theme.colors.pokedex.secondary};
     width: 95%;
     height: 85%;
+    ${animationTriggered &&
+    css`
+      background-color: ${theme.colors.pokedex.screenOn};
+      border: 0;
+      border-radius: 0;
+      width: 100%;
+      height: 100%;
+      transition: background-color 200ms 500ms ease-in-out,
+        border 500ms 1000ms ease-in-out, border-radius 500ms 1000ms ease-in-out,
+        width 500ms 1000ms ease-in-out, height 500ms 1000ms ease-in-out;
+    `}
   `}
 `;
 
-export const BottomDetail = styled.div`
-  ${({ theme }) => css`
+export const BottomDetail = styled.div<AnimationProps>`
+  ${({ theme, animationTriggered }) => css`
     background-color: ${theme.colors.pokedex.secondary};
     width: 100%;
     height: min(5vh, 3.2rem);
     position: absolute;
     bottom: 0;
+    ${animationTriggered &&
+    css`
+      opacity: 0;
+      transition: opacity 200ms 1000ms linear;
+    `}
   `}
 `;
 
