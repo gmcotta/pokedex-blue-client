@@ -4,13 +4,39 @@ export const Wrapper = styled.main`
   ${({ theme }) => css`
     height: 200%;
     background-color: ${theme.colors.pokedex.primary};
+    overflow: hidden;
   `}
 `;
 
 export const UpperScreen = styled.section`
   ${({ theme }) => css`
     height: 50%;
+    background-color: ${theme.colors.pokedex.primary};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    position: relative;
+  `}
+`;
+
+export const Display = styled.div`
+  ${({ theme }) => css`
+    background-color: ${theme.colors.pokedex.screenOff};
+    border-radius: 0.8rem;
+    border: min(5vh, 3.2rem) solid ${theme.colors.pokedex.secondary};
+    width: 95%;
+    height: 85%;
+  `}
+`;
+
+export const BottomDetail = styled.div`
+  ${({ theme }) => css`
     background-color: ${theme.colors.pokedex.secondary};
+    width: 100%;
+    height: min(5vh, 3.2rem);
+    position: absolute;
+    bottom: 0;
   `}
 `;
 
@@ -117,8 +143,8 @@ export const DPadWrapper = styled.div`
 export const DPadButton = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.grayLight};
-    height: min(6vw, 4.8rem);
-    width: min(6vw, 4.8rem);
+    height: min(6vw, 4rem);
+    width: min(6vw, 4rem);
     grid-area: center;
   `}
 `;
