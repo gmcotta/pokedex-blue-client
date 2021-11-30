@@ -53,8 +53,8 @@ type RectangleButtonProps = {
 
 export const RectangleButton = styled.div<RectangleButtonProps>`
   ${({ theme, position = 'topLeft' }) => css`
-    height: clamp(1.6rem, 1vw, 3.2rem);
-    width: clamp(4.8rem, 1vw, 9.6rem);
+    height: min(3vw, 3.2rem);
+    width: min(10vw, 9.6rem);
     background-color: ${theme.colors.grayLight};
     box-shadow: ${theme.effects.shadow.insideWhite},
       ${theme.effects.shadow.outsideBlack};
@@ -83,8 +83,8 @@ export const RightButtonsWrapper = styled.div`
 
 export const SmallCircleButton = styled.div`
   ${({ theme }) => css`
-    height: clamp(1.6rem, 1vw, 3.2rem);
-    width: clamp(1.6rem, 1vw, 3.2rem);
+    height: min(4vw, 3.6rem);
+    width: min(4vw, 3.6rem);
     border-radius: 50%;
     background-color: ${theme.colors.grayLight};
     box-shadow: ${theme.effects.shadow.insideWhite},
@@ -94,21 +94,21 @@ export const SmallCircleButton = styled.div`
 
 export const BigCircleButton = styled.div`
   ${({ theme }) => css`
-    height: clamp(4rem, 1vw, 8rem);
-    width: clamp(4rem, 1vw, 8rem);
+    height: min(8vw, 8rem);
+    width: min(8vw, 8rem);
     border-radius: 50%;
     background-color: ${theme.colors.grayLight};
     box-shadow: ${theme.effects.shadow.insideWhite},
       ${theme.effects.shadow.outsideBlack};
-    margin: 2.4rem 0;
+    margin: min(4vw, 2.4rem) 0;
   `}
 `;
 
 export const DPadWrapper = styled.div`
   ${() => css`
     position: absolute;
-    bottom: clamp(2.4rem, 1vw, 4.8rem);
     left: clamp(2.4rem, 1vw, 4.8rem);
+    bottom: clamp(3.6rem, 1vw, 9.6rem);
     display: grid;
     grid-template-areas: '. top .' 'left center right' '. bottom .';
   `}
@@ -117,8 +117,8 @@ export const DPadWrapper = styled.div`
 export const DPadButton = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.grayLight};
-    height: clamp(3.2rem, 1vw, 6.4rem);
-    width: clamp(3.2rem, 1vw, 6.4rem);
+    height: min(6vw, 4.8rem);
+    width: min(6vw, 4.8rem);
     grid-area: center;
   `}
 `;
