@@ -78,6 +78,7 @@ export const RightButtonsWrapper = styled.div`
   position: absolute;
   bottom: clamp(2.4rem, 1vw, 4.8rem);
   right: clamp(2.4rem, 1vw, 4.8rem);
+  transform: rotateZ(15deg);
 `;
 
 export const SmallCircleButton = styled.div`
@@ -101,4 +102,45 @@ export const BigCircleButton = styled.div`
       ${theme.effects.shadow.outsideBlack};
     margin: 2.4rem 0;
   `}
+`;
+
+export const DPadWrapper = styled.div`
+  ${() => css`
+    position: absolute;
+    bottom: clamp(2.4rem, 1vw, 4.8rem);
+    left: clamp(2.4rem, 1vw, 4.8rem);
+    display: grid;
+    grid-template-areas: '. top .' 'left center right' '. bottom .';
+  `}
+`;
+
+export const DPadButton = styled.div`
+  ${({ theme }) => css`
+    background-color: ${theme.colors.grayLight};
+    height: clamp(3.2rem, 1vw, 6.4rem);
+    width: clamp(3.2rem, 1vw, 6.4rem);
+    grid-area: center;
+  `}
+`;
+
+export const DPadLeft = styled(DPadButton)`
+  box-shadow: -4px 1px 4px rgba(0, 0, 0, 0.25),
+    -4px -4px 4px rgba(0, 0, 0, 0.25);
+  grid-area: left;
+`;
+
+export const DPadTop = styled(DPadButton)`
+  box-shadow: -3px -4px 4px rgba(0, 0, 0, 0.25),
+    -4px 0px 4px rgba(0, 0, 0, 0.25);
+  grid-area: top;
+`;
+
+export const DPadRight = styled(DPadButton)`
+  box-shadow: inset -4px -4px 4px #ffffff;
+  grid-area: right;
+`;
+
+export const DPadBottom = styled(DPadButton)`
+  box-shadow: inset -4px -4px 4px #ffffff;
+  grid-area: bottom;
 `;

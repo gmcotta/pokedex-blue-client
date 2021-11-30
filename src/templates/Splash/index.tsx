@@ -10,6 +10,13 @@ const SplashTemplate = () => {
         </S.PokeballDecoration>
         <S.RectangleButton position="topLeft" />
         <S.RectangleButton position="topRight" />
+        <S.DPadWrapper>
+          <S.DPadButton />
+          <S.DPadTop />
+          <S.DPadRight />
+          <S.DPadBottom />
+          <S.DPadLeft />
+        </S.DPadWrapper>
         <S.RightButtonsWrapper>
           <S.SmallCircleButton />
           <S.BigCircleButton />
