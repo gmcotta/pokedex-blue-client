@@ -1,13 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 import * as S from './styles';
 
 const SplashTemplate = () => {
   const [isAnimationTriggered, setIsAnimationTriggered] = useState(false);
+  const { push } = useRouter();
 
   const handleStartAnimation = () => {
     setIsAnimationTriggered(true);
   };
+
+  useEffect(() => {
+    const displayElement = document.querySelector('.display');
+    console.log(displayElement);
+    displayElement?.addEventListener(
+      'animationend',
+      function () {
+        console.log('terminou a animação');
+        push('/list');
+      },
+      false
+    );
+  }, [push]);
 
   return (
     <S.Container>
@@ -17,13 +32,16 @@ const SplashTemplate = () => {
             src="/images/pokemon-title-logo.png"
             alt="Pokémon - título"
           />
-          <S.Subtitle>Pokédex - Blue Version</S.Subtitle>
+          <S.Subtitle>Pokédex - React Version</S.Subtitle>
         </>
         <S.Button onClick={handleStartAnimation}>Iniciar</S.Button>
       </S.Overlay>
       <S.Device animationTriggered={isAnimationTriggered}>
         <S.UpperScreen>
-          <S.Display animationTriggered={isAnimationTriggered} />
+          <S.Display
+            className="display"
+            animationTriggered={isAnimationTriggered}
+          />
           <S.BottomDetail animationTriggered={isAnimationTriggered} />
         </S.UpperScreen>
         <S.LowerScreen>

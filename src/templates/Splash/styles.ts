@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes, DefaultTheme } from 'styled-components';
 
 export const Container = styled.main`
   height: 100%;
@@ -37,6 +37,23 @@ export const UpperScreen = styled.section`
   `}
 `;
 
+const turnOnDisplay = (theme: DefaultTheme) => keyframes`
+  from {
+    background-color: ${theme.colors.pokedex.screenOff};
+    border-radius: 0.8rem;
+    border: min(5vh, 3.2rem) solid ${theme.colors.pokedex.secondary};
+    width: 95%;
+    height: 85%;
+  }
+  to {
+    background-color: ${theme.colors.pokedex.screenOn};
+      border: 0;
+      border-radius: 0;
+      width: 100%;
+      height: 100%;
+  }
+`;
+
 export const Display = styled.div<AnimationProps>`
   ${({ theme, animationTriggered }) => css`
     background-color: ${theme.colors.pokedex.screenOff};
@@ -46,14 +63,8 @@ export const Display = styled.div<AnimationProps>`
     height: 85%;
     ${animationTriggered &&
     css`
-      background-color: ${theme.colors.pokedex.screenOn};
-      border: 0;
-      border-radius: 0;
-      width: 100%;
-      height: 100%;
-      transition: background-color 200ms 1000ms ease-in-out,
-        border 500ms 1500ms ease-in-out, border-radius 500ms 1500ms ease-in-out,
-        width 500ms 1500ms ease-in-out, height 500ms 1500ms ease-in-out;
+      animation: ${turnOnDisplay(theme)} 500ms 1000ms ease-in-out;
+      animation-fill-mode: forwards;
     `}
   `}
 `;
