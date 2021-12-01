@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Pokeball from 'components/Pokedex/Pokeball';
+
 import * as S from './styles';
 
 const SplashTemplate = () => {
@@ -11,6 +11,16 @@ const SplashTemplate = () => {
 
   return (
     <S.Container>
+      <S.Overlay animationTriggered={isAnimationTriggered}>
+        <>
+          <S.TitleLogo
+            src="/images/pokemon-title-logo.png"
+            alt="Pokémon - título"
+          />
+          <S.Subtitle>Pokédex - Blue Version</S.Subtitle>
+        </>
+        <S.Button onClick={handleStartAnimation}>Iniciar</S.Button>
+      </S.Overlay>
       <S.Device animationTriggered={isAnimationTriggered}>
         <S.UpperScreen>
           <S.Display animationTriggered={isAnimationTriggered} />
@@ -18,7 +28,9 @@ const SplashTemplate = () => {
         </S.UpperScreen>
         <S.LowerScreen>
           <S.PokeballDecoration>
-            <Pokeball />
+            <S.OutterBall>
+              <S.InnerBall />
+            </S.OutterBall>
           </S.PokeballDecoration>
           <S.RectangleButton position="topLeft" />
           <S.RectangleButton position="topRight" />
@@ -34,7 +46,6 @@ const SplashTemplate = () => {
             <S.BigCircleButton />
             <S.SmallCircleButton />
           </S.RightButtonsWrapper>
-          <S.Button onClick={handleStartAnimation}>Começar</S.Button>
         </S.LowerScreen>
       </S.Device>
     </S.Container>

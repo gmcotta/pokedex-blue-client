@@ -6,11 +6,6 @@ export const Container = styled.main`
   overflow: hidden;
 `;
 
-export const Button = styled.button`
-  position: absolute;
-  bottom: 10%;
-`;
-
 type AnimationProps = {
   animationTriggered: boolean;
 };
@@ -25,7 +20,7 @@ export const Device = styled.section<AnimationProps>`
     ${animationTriggered &&
     css`
       bottom: -100%;
-      transition: bottom 500ms ease-in-out;
+      transition: bottom 500ms 300ms ease-in-out;
     `}
   `}
 `;
@@ -56,9 +51,9 @@ export const Display = styled.div<AnimationProps>`
       border-radius: 0;
       width: 100%;
       height: 100%;
-      transition: background-color 200ms 500ms ease-in-out,
-        border 500ms 1000ms ease-in-out, border-radius 500ms 1000ms ease-in-out,
-        width 500ms 1000ms ease-in-out, height 500ms 1000ms ease-in-out;
+      transition: background-color 200ms 1000ms ease-in-out,
+        border 500ms 1500ms ease-in-out, border-radius 500ms 1500ms ease-in-out,
+        width 500ms 1500ms ease-in-out, height 500ms 1500ms ease-in-out;
     `}
   `}
 `;
@@ -108,6 +103,40 @@ export const PokeballDecoration = styled.div`
       background-color: ${theme.colors.pokedex.secondary};
       position: absolute;
     }
+  `}
+`;
+
+export const OutterBall = styled.div`
+  ${({ theme }) => css`
+    width: min(80vw, 40rem);
+    height: min(80vw, 40rem);
+    background-color: ${theme.colors.pokedex.secondary};
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.6rem;
+
+    &::after {
+      content: ' ';
+      width: min(80vw, 40rem);
+      height: min(5vw, 3.2rem);
+      background-color: ${theme.colors.pokedex.primary};
+      position: absolute;
+    }
+  `}
+`;
+
+export const InnerBall = styled.div`
+  ${({ theme }) => css`
+    box-sizing: content-box;
+    width: min(20vw, 10rem);
+    height: min(20vw, 10rem);
+    background-color: ${theme.colors.pokedex.secondary};
+    border-radius: 50%;
+    border: min(5vw, 3.2rem) solid ${theme.colors.pokedex.primary};
+    z-index: 2;
   `}
 `;
 
@@ -207,4 +236,69 @@ export const DPadRight = styled(DPadButton)`
 export const DPadBottom = styled(DPadButton)`
   box-shadow: inset -4px -4px 4px #ffffff;
   grid-area: bottom;
+`;
+
+export const Overlay = styled.div<AnimationProps>`
+  ${({ animationTriggered }) => css`
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    ${animationTriggered &&
+    css`
+      opacity: 0;
+      transition: opacity 300ms ease-in-out;
+    `}
+  `}
+`;
+
+export const TitleLogo = styled.img`
+  width: 90%;
+`;
+
+export const Subtitle = styled.h2`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.xl};
+    color: #c4dced;
+
+    @media (max-width: ${theme.breakpoints.md}) {
+      font-size: ${theme.font.sizes.lg};
+    }
+
+    @media (max-width: ${theme.breakpoints.sm}) {
+      font-size: ${theme.font.sizes.md};
+    }
+  `}
+`;
+
+export const Button = styled.button`
+  ${({ theme }) => css`
+    background: linear-gradient(180deg, #83b8e9 25%, #2390f4 100%);
+    font-size: ${theme.font.sizes.sm};
+    color: ${theme.colors.grayLight};
+    height: 4.8rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: 0.8rem;
+    margin-top: 2.4rem;
+    border: 0;
+    border-bottom: 4px solid #2d41f0;
+
+    &:hover {
+      filter: brightness(0.8);
+
+      cursor: pointer;
+      transition: filter 200ms ease-in;
+    }
+
+    &:active {
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+  `}
 `;
