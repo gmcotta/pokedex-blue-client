@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 
 import * as S from './styles';
@@ -11,18 +11,9 @@ const SplashTemplate = () => {
     setIsAnimationTriggered(true);
   };
 
-  useEffect(() => {
-    const displayElement = document.querySelector('.display');
-    console.log(displayElement);
-    displayElement?.addEventListener(
-      'animationend',
-      function () {
-        console.log('terminou a animação');
-        push('/list');
-      },
-      false
-    );
-  }, [push]);
+  const handleEndAnimation = () => {
+    push('/list');
+  };
 
   return (
     <S.Container>
@@ -39,7 +30,7 @@ const SplashTemplate = () => {
       <S.Device animationTriggered={isAnimationTriggered}>
         <S.UpperScreen>
           <S.Display
-            className="display"
+            onAnimationEnd={handleEndAnimation}
             animationTriggered={isAnimationTriggered}
           />
           <S.BottomDetail animationTriggered={isAnimationTriggered} />
