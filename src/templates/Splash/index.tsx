@@ -12,7 +12,7 @@ const SplashTemplate = () => {
   };
 
   const handleEndAnimation = () => {
-    push('/list');
+    push('/pokemon-list');
   };
 
   return (

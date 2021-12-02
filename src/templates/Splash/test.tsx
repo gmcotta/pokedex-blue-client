@@ -47,7 +47,7 @@ describe('<Splash />', () => {
     });
     fireEvent.animationEnd(screen.getByRole('figure'));
     await waitFor(() => {
-      expect(push).toHaveBeenCalled();
+      expect(push).toHaveBeenCalledWith('pokemon-list');
     });
   });
 });
