@@ -30,6 +30,7 @@ const SplashTemplate = () => {
       <S.Device animationTriggered={isAnimationTriggered}>
         <S.UpperScreen>
           <S.Display
+            role="figure"
             onAnimationEnd={handleEndAnimation}
             animationTriggered={isAnimationTriggered}
           />
