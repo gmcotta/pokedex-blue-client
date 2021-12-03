@@ -41,7 +41,7 @@ const turnOnDisplay = (theme: DefaultTheme) => keyframes`
   from {
     background-color: ${theme.colors.pokedex.screenOff};
     border-radius: 0.8rem;
-    border: min(5vh, 3.2rem) solid ${theme.colors.pokedex.secondary};
+    border: min(5vh, 3.2rem) solid ${theme.colors.pokedex.primaryDark};
     width: 95%;
     height: 85%;
   }
@@ -58,7 +58,7 @@ export const Display = styled.div<AnimationProps>`
   ${({ theme, animationTriggered }) => css`
     background-color: ${theme.colors.pokedex.screenOff};
     border-radius: 0.8rem;
-    border: min(5vh, 3.2rem) solid ${theme.colors.pokedex.secondary};
+    border: min(5vh, 3.2rem) solid ${theme.colors.pokedex.primaryDark};
     width: 95%;
     height: 85%;
     ${animationTriggered &&
@@ -71,7 +71,7 @@ export const Display = styled.div<AnimationProps>`
 
 export const BottomDetail = styled.div<AnimationProps>`
   ${({ theme, animationTriggered }) => css`
-    background-color: ${theme.colors.pokedex.secondary};
+    background-color: ${theme.colors.pokedex.primaryDark};
     width: 100%;
     height: min(5vh, 3.2rem);
     position: absolute;
@@ -104,14 +104,14 @@ export const PokeballDecoration = styled.div`
     height: min(102vw, 80rem);
     background-color: transparent;
     border-radius: 50%;
-    border: min(5vw, 3.2rem) solid ${theme.colors.pokedex.secondary};
+    border: min(5vw, 3.2rem) solid ${theme.colors.pokedex.primaryDark};
     /* margin: 1.6rem; */
 
     &::after {
       content: '';
       width: min(5vw, 3.2rem);
       height: 120vh;
-      background-color: ${theme.colors.pokedex.secondary};
+      background-color: ${theme.colors.pokedex.primaryDark};
       position: absolute;
     }
   `}
@@ -121,7 +121,7 @@ export const OutterBall = styled.div`
   ${({ theme }) => css`
     width: min(80vw, 40rem);
     height: min(80vw, 40rem);
-    background-color: ${theme.colors.pokedex.secondary};
+    background-color: ${theme.colors.pokedex.primaryDark};
     border-radius: 50%;
     position: relative;
     display: flex;
@@ -144,7 +144,7 @@ export const InnerBall = styled.div`
     box-sizing: content-box;
     width: min(20vw, 10rem);
     height: min(20vw, 10rem);
-    background-color: ${theme.colors.pokedex.secondary};
+    background-color: ${theme.colors.pokedex.primaryDark};
     border-radius: 50%;
     border: min(5vw, 3.2rem) solid ${theme.colors.pokedex.primary};
     z-index: 2;
@@ -159,7 +159,7 @@ export const RectangleButton = styled.div<RectangleButtonProps>`
   ${({ theme, position = 'topLeft' }) => css`
     height: min(3vw, 3.2rem);
     width: min(10vw, 9.6rem);
-    background-color: ${theme.colors.grayLight};
+    background-color: ${theme.colors.gray};
     box-shadow: ${theme.effects.shadow.insideWhite},
       ${theme.effects.shadow.outsideBlack};
     position: absolute;
@@ -190,7 +190,7 @@ export const SmallCircleButton = styled.div`
     height: min(4vw, 3.6rem);
     width: min(4vw, 3.6rem);
     border-radius: 50%;
-    background-color: ${theme.colors.grayLight};
+    background-color: ${theme.colors.gray};
     box-shadow: ${theme.effects.shadow.insideWhite},
       ${theme.effects.shadow.outsideBlack};
   `}
@@ -201,7 +201,7 @@ export const BigCircleButton = styled.div`
     height: min(8vw, 8rem);
     width: min(8vw, 8rem);
     border-radius: 50%;
-    background-color: ${theme.colors.grayLight};
+    background-color: ${theme.colors.gray};
     box-shadow: ${theme.effects.shadow.insideWhite},
       ${theme.effects.shadow.outsideBlack};
     margin: min(4vw, 2.4rem) 0;
@@ -220,7 +220,7 @@ export const DPadWrapper = styled.div`
 
 export const DPadButton = styled.div`
   ${({ theme }) => css`
-    background-color: ${theme.colors.grayLight};
+    background-color: ${theme.colors.gray};
     height: min(6vw, 4rem);
     width: min(6vw, 4rem);
     grid-area: center;
@@ -293,7 +293,7 @@ export const Button = styled.button`
   ${({ theme }) => css`
     background: linear-gradient(180deg, #83b8e9 25%, #2390f4 100%);
     font-size: ${theme.font.sizes.sm};
-    color: ${theme.colors.grayLight};
+    color: ${theme.colors.gray};
     height: 4.8rem;
     padding: 0.8rem 1.6rem;
     border-radius: 0.8rem;
