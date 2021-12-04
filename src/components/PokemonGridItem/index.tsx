@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { LiHTMLAttributes } from 'react';
+import formatPokemonName from '../../utils/formatPokemonName';
 
 import { PokemonGridItemProps as ModelProps } from './models';
 import * as S from './styles';
@@ -27,10 +28,7 @@ const PokemonGridItem = ({
       onClick={() => handleClick(pokemonId)}
       {...props}
     >
-      <img
-        src={imgSrc}
-        alt={`#${pokemonId.toString().padStart(3, '0')} - ${name}`}
-      />
+      <img src={imgSrc} alt={formatPokemonName(pokemonId, name)} />
     </S.Wrapper>
   );
 };

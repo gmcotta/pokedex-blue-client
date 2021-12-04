@@ -2,11 +2,12 @@ import PokemonGridItem from 'components/PokemonGridItem';
 import pokemonMock from 'components/PokemonGridItem/mock';
 import * as S from './styles';
 import { useState } from 'react';
+import formatPokemonName from 'utils/formatPokemonName';
 
 const PokemonListTemplate = () => {
   const [pokemonName, setPokemonName] = useState('');
   const handleMouseEnter = (id: number, name: string) => {
-    setPokemonName(`#${id.toString().padStart(3, '0')} - ${name}`);
+    setPokemonName(formatPokemonName(id, name));
   };
   const handleMouseLeave = () => {
     setPokemonName('');

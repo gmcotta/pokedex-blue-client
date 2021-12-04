@@ -5,6 +5,7 @@ import { renderWithTheme } from '../../utils/testUtils';
 
 import PokemonGridItem from '.';
 import pokemonMock from './mock';
+import formatPokemonName from '../../utils/formatPokemonName';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const useRouter = jest.spyOn(require('next/router'), 'useRouter');
@@ -35,7 +36,7 @@ describe('<PokemonGridItem />', () => {
     expect(screen.getByRole('button')).toBeInTheDocument();
     expect(
       screen.getByRole('img', {
-        name: `#${pokemonId.toString().padStart(3, '0')}-${name}`,
+        name: formatPokemonName(pokemonId, name),
       })
     ).toBeInTheDocument();
   });
@@ -71,7 +72,7 @@ describe('<PokemonGridItem />', () => {
     expect(screen.getByRole('button')).toBeInTheDocument();
     expect(
       screen.getByRole('img', {
-        name: `#${pokemonId.toString().padStart(3, '0')}-${name}`,
+        name: formatPokemonName(pokemonId, name),
       })
     ).toBeInTheDocument();
   });
