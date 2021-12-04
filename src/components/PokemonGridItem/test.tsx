@@ -23,10 +23,10 @@ const pokemonWithTwoTypes = pokemonMock[0];
 
 describe('<PokemonGridItem />', () => {
   it('should render the component with pokemon with one type', () => {
-    const { id, imgSrc, name, pokemonTypes } = pokemonWithOneType;
+    const { pokemonId, imgSrc, name, pokemonTypes } = pokemonWithOneType;
     renderWithTheme(
       <PokemonGridItem
-        id={id}
+        pokemonId={pokemonId}
         imgSrc={imgSrc}
         name={name}
         pokemonTypes={pokemonTypes}
@@ -35,16 +35,16 @@ describe('<PokemonGridItem />', () => {
     expect(screen.getByRole('button')).toBeInTheDocument();
     expect(
       screen.getByRole('img', {
-        name: `#${id.toString().padStart(3, '0')}-${name}`,
+        name: `#${pokemonId.toString().padStart(3, '0')}-${name}`,
       })
     ).toBeInTheDocument();
   });
 
   it('should appear background color when user hover the component', async () => {
-    const { id, imgSrc, name, pokemonTypes } = pokemonWithOneType;
+    const { pokemonId, imgSrc, name, pokemonTypes } = pokemonWithOneType;
     renderWithTheme(
       <PokemonGridItem
-        id={id}
+        pokemonId={pokemonId}
         imgSrc={imgSrc}
         name={name}
         pokemonTypes={pokemonTypes}
@@ -59,10 +59,10 @@ describe('<PokemonGridItem />', () => {
   });
 
   it('should render the component with pokemon with two types', () => {
-    const { id, imgSrc, name, pokemonTypes } = pokemonWithTwoTypes;
+    const { pokemonId, imgSrc, name, pokemonTypes } = pokemonWithTwoTypes;
     renderWithTheme(
       <PokemonGridItem
-        id={id}
+        pokemonId={pokemonId}
         imgSrc={imgSrc}
         name={name}
         pokemonTypes={pokemonTypes}
@@ -71,16 +71,16 @@ describe('<PokemonGridItem />', () => {
     expect(screen.getByRole('button')).toBeInTheDocument();
     expect(
       screen.getByRole('img', {
-        name: `#${id.toString().padStart(3, '0')}-${name}`,
+        name: `#${pokemonId.toString().padStart(3, '0')}-${name}`,
       })
     ).toBeInTheDocument();
   });
 
   it('should appear gradient when user hover the component', async () => {
-    const { id, imgSrc, name, pokemonTypes } = pokemonWithTwoTypes;
+    const { pokemonId, imgSrc, name, pokemonTypes } = pokemonWithTwoTypes;
     renderWithTheme(
       <PokemonGridItem
-        id={id}
+        pokemonId={pokemonId}
         imgSrc={imgSrc}
         name={name}
         pokemonTypes={pokemonTypes}
@@ -95,10 +95,10 @@ describe('<PokemonGridItem />', () => {
     });
   });
   it('should redirect to pokémon info page', async () => {
-    const { id, imgSrc, name, pokemonTypes } = pokemonWithTwoTypes;
+    const { pokemonId, imgSrc, name, pokemonTypes } = pokemonWithTwoTypes;
     renderWithTheme(
       <PokemonGridItem
-        id={id}
+        pokemonId={pokemonId}
         imgSrc={imgSrc}
         name={name}
         pokemonTypes={pokemonTypes}
@@ -106,7 +106,7 @@ describe('<PokemonGridItem />', () => {
     );
     userEvent.click(screen.getByRole('button'));
     await waitFor(() => {
-      expect(push).toHaveBeenCalledWith(`/pokemon/${id}`);
+      expect(push).toHaveBeenCalledWith(`/pokemon/${pokemonId}`);
     });
   });
 });

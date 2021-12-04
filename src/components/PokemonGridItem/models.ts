@@ -19,7 +19,7 @@ export type PokemonTypes =
   | 'water';
 
 export type PokemonGridItemProps = {
-  id: number;
+  pokemonId: number;
   imgSrc: string;
   name: string;
   pokemonTypes: [PokemonTypes, PokemonTypes?];
