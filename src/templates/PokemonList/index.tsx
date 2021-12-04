@@ -1,14 +1,23 @@
-import * as S from './styles';
 import PokemonGridItem from 'components/PokemonGridItem';
 import pokemonMock from 'components/PokemonGridItem/mock';
+import * as S from './styles';
+import { useState } from 'react';
 
 const PokemonListTemplate = () => {
+  const [pokemonName, setPokemonName] = useState('');
+  const handleMouseEnter = (id: number, name: string) => {
+    setPokemonName(`#${id.toString().padStart(3, '0')} - ${name}`);
+  };
+  const handleMouseLeave = () => {
+    setPokemonName('');
+  };
+
   return (
     <>
       <S.Header>
         <div>
           <button>Filter</button>
-          <input />
+          <input defaultValue={pokemonName} />
           <button>Settings</button>
         </div>
       </S.Header>
@@ -18,14 +27,16 @@ const PokemonListTemplate = () => {
             {pokemonMock.map((p, index) => (
               <PokemonGridItem
                 key={index}
-                id={p.id}
+                pokemonId={p.pokemonId}
                 name={p.name}
                 imgSrc={p.imgSrc}
                 pokemonTypes={p.pokemonTypes}
+                onMouseEnter={() => handleMouseEnter(p.pokemonId, p.name)}
+                onMouseLeave={handleMouseLeave}
               />
             ))}
           </S.Grid>
-          <div>Scrollbar</div>
+          <div>S</div>
         </S.ListContainer>
         <S.ReactIllustrationContainer>
           <S.ReactIllustrationEllipses>

@@ -25,6 +25,7 @@ export const Wrapper = styled.li<WrapperProps>`
     return css`
       height: 100%;
       aspect-ratio: 1;
+      border-radius: 6.4rem;
 
       &:hover,
       &:focus {
@@ -32,7 +33,7 @@ export const Wrapper = styled.li<WrapperProps>`
         border: 4px solid rgba(255, 255, 255, 0.3);
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
           inset 0px 4px 4px rgba(255, 255, 255, 0.25);
-        border-radius: 64px;
+
         z-index: 5;
         cursor: pointer;
       }
@@ -40,6 +41,7 @@ export const Wrapper = styled.li<WrapperProps>`
       & img {
         height: 100%;
         z-index: 10;
+        border-radius: 6.4rem;
       }
     `;
   }}
