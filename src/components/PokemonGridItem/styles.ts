@@ -5,7 +5,7 @@ import { PokemonGridItemProps } from './models';
 
 type WrapperProps = Pick<PokemonGridItemProps, 'pokemonTypes'>;
 
-export const Wrapper = styled.div<WrapperProps>`
+export const Wrapper = styled.li<WrapperProps>`
   ${({ pokemonTypes, theme }) => {
     const firstPokemonType = rgba(theme.colors.type[pokemonTypes[0]], 0.3);
     const secondPokemonType =
@@ -23,7 +23,7 @@ export const Wrapper = styled.div<WrapperProps>`
     `;
 
     return css`
-      width: 100%;
+      height: 100%;
       aspect-ratio: 1;
 
       &:hover,
@@ -38,7 +38,6 @@ export const Wrapper = styled.div<WrapperProps>`
       }
 
       & img {
-        width: 100%;
         height: 100%;
         z-index: 10;
       }
