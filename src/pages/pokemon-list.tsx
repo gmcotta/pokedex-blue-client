@@ -1,5 +1,5 @@
-const ListPage = () => {
-  return <h1>ListPage</h1>;
-};
+import PokemonListTemplate from 'templates/PokemonList';
 
-export default ListPage;
+export default function PokemonList() {
+  return <PokemonListTemplate />;
+}

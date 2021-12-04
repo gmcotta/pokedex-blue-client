@@ -29,6 +29,7 @@ export default {
     },
     gray: '#EDEAEA',
     white: '#F8F8F8',
+    react: '#46A3B8',
   },
   effects: {
     shadow: {
