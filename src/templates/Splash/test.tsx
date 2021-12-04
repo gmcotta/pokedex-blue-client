@@ -37,7 +37,6 @@ describe('<Splash />', () => {
 
   it('should redirect to Pokémon List page', async () => {
     renderWithTheme(<Splash />);
-    screen.logTestingPlaygroundURL();
     act(() => {
       userEvent.click(
         screen.getByRole('button', {
