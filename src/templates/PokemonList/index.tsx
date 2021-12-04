@@ -1,10 +1,9 @@
 import * as S from './styles';
+import PokemonGridItem from 'components/PokemonGridItem';
+import pokemonItem from 'components/PokemonGridItem/mock';
 
 const PokemonListTemplate = () => {
-  const pokemon = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-    22, 23, 24, 25, 26, 27, 28, 29, 30,
-  ];
+  const pokemon = [pokemonItem];
   return (
     <>
       <S.Header>
@@ -17,8 +16,14 @@ const PokemonListTemplate = () => {
       <S.Container>
         <S.ListContainer>
           <S.Grid>
-            {pokemon.map((p) => (
-              <S.Item key={p}>{p}</S.Item>
+            {pokemon.map((p, index) => (
+              <PokemonGridItem
+                key={index}
+                id={p.id}
+                name={p.name}
+                imgSrc={p.imgSrc}
+                pokemonTypes={p.pokemonTypes}
+              />
             ))}
           </S.Grid>
           <div>Scrollbar</div>
