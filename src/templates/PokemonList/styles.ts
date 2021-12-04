@@ -7,6 +7,7 @@ export const Container = styled.main`
       width: 100%;
       height: 100%;
       background-color: ${theme.colors.pokedex.screenOn};
+      padding-top: 6.4rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -28,7 +29,7 @@ export const Header = styled.header`
 
     & > div {
       width: 80%;
-      max-width: 100rem;
+      max-width: 120rem;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -56,7 +57,7 @@ export const ReactIllustrationContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* animation: ${rotateReact} ${animationDurationInMinutes(3)} infinite; */
+  animation: ${rotateReact} ${animationDurationInMinutes(3)} infinite;
 `;
 
 export const ReactIllustrationEllipses = styled.div`
@@ -101,5 +102,24 @@ export const ReactIllustrationCore = styled.div`
     background-color: ${theme.colors.react};
     border-radius: 50%;
     position: absolute;
+  `}
+`;
+
+export const ListContainer = styled.section`
+  ${() => css`
+    position: absolute;
+    bottom: 4rem;
+    width: 80%;
+    max-width: 120rem;
+    height: calc(90% - 6.4rem);
+    z-index: 10;
+    margin: 0 auto;
+    padding: 2rem 1.6rem;
+    background: rgba(196, 196, 196, 0.5);
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+      inset 0px 4px 4px rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(1rem);
+    border-radius: 6.4rem;
   `}
 `;

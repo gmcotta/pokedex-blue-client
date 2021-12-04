@@ -56,9 +56,8 @@ const GlobalStyles = createGlobalStyle`
     overflow-wrap: break-word;
   }
 
-  #root,
-  #__next {
-    isolation: isolate;
+  ul {
+    list-style: none;
   }
 `;
 
