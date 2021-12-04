@@ -3,11 +3,13 @@ import * as S from './styles';
 const PokemonListTemplate = () => {
   return (
     <S.Container>
-      <header>
-        <button>Filter</button>
-        <input />
-        <button>Settings</button>
-      </header>
+      <S.Header>
+        <div>
+          <button>Filter</button>
+          <input />
+          <button>Settings</button>
+        </div>
+      </S.Header>
       <section>
         <ul>
           <li>Bulbasaur</li>
