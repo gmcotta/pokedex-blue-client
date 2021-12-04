@@ -1,9 +1,8 @@
 import * as S from './styles';
 import PokemonGridItem from 'components/PokemonGridItem';
-import pokemonItem from 'components/PokemonGridItem/mock';
+import pokemonMock from 'components/PokemonGridItem/mock';
 
 const PokemonListTemplate = () => {
-  const pokemon = [pokemonItem];
   return (
     <>
       <S.Header>
@@ -16,7 +15,7 @@ const PokemonListTemplate = () => {
       <S.Container>
         <S.ListContainer>
           <S.Grid>
-            {pokemon.map((p, index) => (
+            {pokemonMock.map((p, index) => (
               <PokemonGridItem
                 key={index}
                 id={p.id}
