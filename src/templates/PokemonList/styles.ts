@@ -5,6 +5,7 @@ export const Container = styled.main`
     return css`
       width: 100%;
       height: 100%;
+      overflow-y: hidden;
       background-color: ${theme.colors.pokedex.screenOn};
       padding-top: 6.4rem;
       display: flex;
@@ -29,7 +30,7 @@ export const Header = styled.header`
 
     & > div {
       width: 80%;
-      max-width: 120rem;
+      max-width: 100rem;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -110,11 +111,11 @@ export const ListContainer = styled.section`
     position: absolute;
     bottom: 4rem;
     width: 80%;
-    max-width: 120rem;
+    max-width: 100rem;
     height: calc(90% - 6.4rem);
     z-index: 10;
     margin: 0 auto;
-    padding: 2rem 1.6rem;
+    padding: 1.6rem;
     background-color: rgba(196, 196, 196, 0.5);
     border: 4px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
@@ -126,14 +127,30 @@ export const ListContainer = styled.section`
 `;
 
 export const Grid = styled.ul`
-  width: 97%;
+  width: 100%;
   height: 100%;
   display: grid;
+  padding: 1.2rem;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   grid-gap: 0.4rem;
   grid-template-rows: repeat(auto-fill, minmax(15rem, 1fr));
   overflow-y: auto;
   justify-items: center;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: none;
+    margin: 2.4rem 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.4rem;
+    background-color: white;
+  }
 `;
 
 export const Item = styled.li`

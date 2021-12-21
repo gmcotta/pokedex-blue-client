@@ -1,11 +1,23 @@
+import { useState, useEffect } from 'react';
+
 import PokemonGridItem from 'components/PokemonGridItem';
-import pokemonMock from 'components/PokemonGridItem/mock';
-import * as S from './styles';
-import { useState } from 'react';
+import { PokemonGridItemProps } from 'components/PokemonGridItem/models';
 import formatPokemonName from 'utils/formatPokemonName';
 
-const PokemonListTemplate = () => {
+import * as S from './styles';
+
+type PokemonListPageProps = {
+  pokemonList: PokemonGridItemProps[];
+};
+
+const PokemonListTemplate = ({ pokemonList }: PokemonListPageProps) => {
   const [pokemonName, setPokemonName] = useState('');
+  const [allPokemon, setAllPokemon] = useState<PokemonGridItemProps[]>([]);
+
+  useEffect(() => {
+    setAllPokemon(pokemonList);
+  }, [pokemonList]);
+
   const handleMouseEnter = (id: number, name: string) => {
     setPokemonName(formatPokemonName(id, name));
   };
@@ -25,9 +37,9 @@ const PokemonListTemplate = () => {
       <S.Container>
         <S.ListContainer>
           <S.Grid>
-            {pokemonMock.map((p, index) => (
+            {allPokemon.map((p) => (
               <PokemonGridItem
-                key={index}
+                key={p.pokemonId}
                 pokemonId={p.pokemonId}
                 name={p.name}
                 imgSrc={p.imgSrc}
@@ -37,7 +49,6 @@ const PokemonListTemplate = () => {
               />
             ))}
           </S.Grid>
-          <div>S</div>
         </S.ListContainer>
         <S.ReactIllustrationContainer>
           <S.ReactIllustrationEllipses>
