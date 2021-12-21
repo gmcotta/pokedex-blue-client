@@ -7,18 +7,6 @@ import PokemonGridItem from '.';
 import pokemonMock from './mock';
 import formatPokemonName from '../../utils/formatPokemonName';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const useRouter = jest.spyOn(require('next/router'), 'useRouter');
-const push = jest.fn();
-const prefetch = jest.fn(() => Promise.resolve(true));
-useRouter.mockImplementation(() => ({
-  push,
-  prefetch,
-  query: '',
-  asPath: '',
-  route: '/',
-}));
-
 const pokemonWithOneType = pokemonMock[3];
 const pokemonWithTwoTypes = pokemonMock[0];
 
@@ -93,21 +81,6 @@ describe('<PokemonGridItem />', () => {
         background:
           'linear-gradient(45deg, rgba(120,200,79,0.3) 0%, rgba(160,64,159,0.3) 100%)',
       });
-    });
-  });
-  it('should redirect to pokémon info page', async () => {
-    const { pokemonId, imgSrc, name, pokemonTypes } = pokemonWithTwoTypes;
-    renderWithTheme(
-      <PokemonGridItem
-        pokemonId={pokemonId}
-        imgSrc={imgSrc}
-        name={name}
-        pokemonTypes={pokemonTypes}
-      />
-    );
-    userEvent.click(screen.getByRole('button'));
-    await waitFor(() => {
-      expect(push).toHaveBeenCalledWith(`/pokemon/${pokemonId}`);
     });
   });
 });

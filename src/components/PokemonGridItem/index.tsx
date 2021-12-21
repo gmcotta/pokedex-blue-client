@@ -1,11 +1,10 @@
-import { useRouter } from 'next/router';
 import { LiHTMLAttributes } from 'react';
+
+import Link from 'next/link';
 import formatPokemonName from '../../utils/formatPokemonName';
 
-import { PokemonGridItemProps as ModelProps } from './models';
+import { PokemonGridItemProps as ModelProps } from 'models';
 import * as S from './styles';
-
-// | ButtonHTMLAttributes<HTMLButtonElement>
 
 type PokemonGridItemProps = ModelProps & LiHTMLAttributes<HTMLLIElement>;
 
@@ -16,19 +15,13 @@ const PokemonGridItem = ({
   pokemonTypes,
   ...props
 }: PokemonGridItemProps) => {
-  const { push } = useRouter();
-  const handleClick = (id: number) => {
-    push(`/pokemon/${id}`);
-  };
-
   return (
-    <S.Wrapper
-      role="button"
-      pokemonTypes={pokemonTypes}
-      onClick={() => handleClick(pokemonId)}
-      {...props}
-    >
-      <img src={imgSrc} alt={formatPokemonName(pokemonId, name)} />
+    <S.Wrapper role="button" pokemonTypes={pokemonTypes} {...props}>
+      <Link href={`/pokemon/${pokemonId}`} passHref>
+        <S.ImageWrapper>
+          <img src={imgSrc} alt={formatPokemonName(pokemonId, name)} />
+        </S.ImageWrapper>
+      </Link>
     </S.Wrapper>
   );
 };
