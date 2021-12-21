@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import PokemonGridItem from 'components/PokemonGridItem';
-import { PokemonGridItemProps } from 'components/PokemonGridItem/models';
+import { PokemonGridItemProps } from 'models';
 import formatPokemonName from 'utils/formatPokemonName';
 
 import * as S from './styles';

@@ -1,4 +1,4 @@
-import { PokemonGridItemProps } from 'components/PokemonGridItem/models';
+import { PokemonGridItemProps } from 'models';
 import {
   GetPokemonList,
   GetPokemonListVariables,

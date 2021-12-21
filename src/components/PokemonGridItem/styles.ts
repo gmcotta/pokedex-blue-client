@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
 
-import { PokemonGridItemProps } from './models';
+import { PokemonGridItemProps } from 'models';
 
 type WrapperProps = Pick<PokemonGridItemProps, 'pokemonTypes'>;
 

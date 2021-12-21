@@ -1,4 +1,4 @@
-import { PokemonGridItemProps } from './models';
+import { PokemonGridItemProps } from 'models';
 
 const mock: PokemonGridItemProps[] = [
   {

@@ -17,10 +17,3 @@ export type PokemonTypes =
   | 'rock'
   | 'steel'
   | 'water';
-
-export type PokemonGridItemProps = {
-  pokemonId: number;
-  imgSrc: string;
-  name: string;
-  pokemonTypes: [PokemonTypes, PokemonTypes?];
-};
