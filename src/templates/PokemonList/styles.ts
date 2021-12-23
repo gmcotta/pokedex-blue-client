@@ -123,6 +123,7 @@ export const ListContainer = styled.section`
     backdrop-filter: blur(1rem);
     border-radius: 6.4rem;
     display: flex;
+    flex-direction: column;
   `}
 `;
 

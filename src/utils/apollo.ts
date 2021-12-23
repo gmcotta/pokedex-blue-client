@@ -13,7 +13,20 @@ const isOnServer = typeof window === 'undefined';
 function createApolloClient() {
   return new ApolloClient({
     link: new HttpLink({ uri: 'http://localhost:1337/graphql' }),
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      typePolicies: {
+        Query: {
+          fields: {
+            pokemons: {
+              keyArgs: false,
+              merge(_, incoming) {
+                return [...incoming.data];
+              },
+            },
+          },
+        },
+      },
+    }),
     ssrMode: isOnServer,
   });
 }
