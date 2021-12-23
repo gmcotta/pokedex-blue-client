@@ -42,7 +42,7 @@ const PokemonListTemplate = () => {
   };
 
   return (
-    <>
+    <S.Wrapper>
       <S.Header>
         <div>
           <button>Filter</button>
@@ -94,7 +94,7 @@ const PokemonListTemplate = () => {
           </S.ReactIllustrationEllipses>
         </S.ReactIllustrationContainer>
       </S.Container>
-    </>
+    </S.Wrapper>
   );
 };
 
