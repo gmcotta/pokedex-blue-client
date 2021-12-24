@@ -1,25 +1,22 @@
 import { useEffect, useState } from 'react';
-import { useQuery } from '@apollo/client';
 
 import PokemonGridItem from 'components/PokemonGridItem';
+import Pagination from 'components/Pagination';
+import { usePokemonListQuery } from 'hooks/usePokemonListQuery';
 import formatPokemonName from 'utils/formatPokemonName';
 
 import * as S from './styles';
-import {
-  GetPokemonList,
-  GetPokemonListVariables,
-} from 'graphql/generated/GetPokemonList';
-import { GET_POKEMON_LIST } from 'graphql/queries/pokemonList';
-import Pagination from 'components/Pagination';
 
 const PokemonListTemplate = () => {
   const [pokemonName, setPokemonName] = useState('');
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
-  const { data, loading, fetchMore } = useQuery<
-    GetPokemonList,
-    GetPokemonListVariables
-  >(GET_POKEMON_LIST, { variables: { page: page, pageSize: 24 } });
+  const { data, loading, fetchMore } = usePokemonListQuery({
+    variables: {
+      page,
+      pageSize: 24,
+    },
+  });
 
   useEffect(() => {
     if (data) {
