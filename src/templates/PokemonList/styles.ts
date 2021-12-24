@@ -103,10 +103,6 @@ const animationDurationInMinutes = (minutes: number) =>
   `${minutes * MINUTE_IN_SECONDS}s`;
 
 export const ReactIllustrationContainer = styled.div`
-  /* width: 80%;
-  max-width: 60rem;
-  height: 80%;
-  max-height: 60rem; */
   height: 80vh;
   width: 80vh;
 
@@ -159,4 +155,12 @@ export const ReactIllustrationCore = styled.div`
     border-radius: 50%;
     position: absolute;
   `}
+`;
+
+export const Loading = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 `;

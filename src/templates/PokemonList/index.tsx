@@ -10,6 +10,7 @@ import {
   GetPokemonListVariables,
 } from 'graphql/generated/GetPokemonList';
 import { GET_POKEMON_LIST } from 'graphql/queries/pokemonList';
+import Pagination from 'components/Pagination';
 
 const PokemonListTemplate = () => {
   const [pokemonName, setPokemonName] = useState('');
@@ -53,7 +54,7 @@ const PokemonListTemplate = () => {
       <S.Container>
         <S.ListContainer>
           {loading ? (
-            <span>Loading...</span>
+            <S.Loading>Loading...</S.Loading>
           ) : (
             <>
               <S.Grid>
@@ -78,13 +79,12 @@ const PokemonListTemplate = () => {
                   />
                 ))}
               </S.Grid>
-              <button disabled={page === 1} onClick={handlePrevPage}>
-                Previous page
-              </button>
-              <input readOnly value={page} />
-              <button disabled={page === lastPage} onClick={handleNextPage}>
-                Next page
-              </button>
+              <Pagination
+                actualPage={page}
+                lastPage={lastPage}
+                handlePrevPage={handlePrevPage}
+                handleNextPage={handleNextPage}
+              />
             </>
           )}
         </S.ListContainer>
