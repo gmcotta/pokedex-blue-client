@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import PokemonGridItem from '@/components/PokemonGridItem';
 import Pagination from '@/components/Pagination';
 import { usePokemonListQuery } from '@/hooks/usePokemonListQuery';
+import { PokemonTypes } from '@/models';
 import formatPokemonName from '@/utils/formatPokemonName';
 
 import * as S from './styles';
@@ -67,9 +68,11 @@ const PokemonListTemplate = () => {
                     imgSrc={`http://localhost:1337${
                       p.attributes!.frontImage.data!.attributes!.url
                     }`}
-                    pokemonTypes={p.attributes!.types!.data.map(
-                      (t) => t.attributes!.name
-                    )}
+                    pokemonTypes={
+                      p.attributes!.types!.data.map(
+                        (t) => t.attributes!.name
+                      ) as [PokemonTypes, PokemonTypes?]
+                    }
                     onMouseEnter={() =>
                       handleMouseEnter(
                         p.attributes!.pokemonId,

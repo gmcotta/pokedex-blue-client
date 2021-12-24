@@ -1,6 +1,8 @@
+import { PokemonTypes } from '.';
+
 export type PokemonGridItemProps = {
   pokemonId: number;
   imgSrc: string;
   name: string;
-  pokemonTypes: string[];
+  pokemonTypes: [PokemonTypes, PokemonTypes?];
 };

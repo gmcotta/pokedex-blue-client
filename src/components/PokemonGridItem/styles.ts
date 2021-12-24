@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
 
-import { PokemonGridItemProps } from 'models';
+import { PokemonTypes } from 'models';
 
-type WrapperProps = Pick<PokemonGridItemProps, 'pokemonTypes'>;
+type WrapperProps = {
+  pokemonTypes: [PokemonTypes, PokemonTypes?];
+};
 
 export const Wrapper = styled.li<WrapperProps>`
   ${({ pokemonTypes, theme }) => {
