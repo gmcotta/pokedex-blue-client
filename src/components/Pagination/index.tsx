@@ -18,7 +18,7 @@ const Pagination = ({
       <button disabled={actualPage === 1} onClick={handlePrevPage}>
         Previous page
       </button>
-      <input readOnly value={actualPage} />
+      <input aria-label="actual page" readOnly value={actualPage} />
       <button disabled={actualPage === lastPage} onClick={handleNextPage}>
         Next page
       </button>
