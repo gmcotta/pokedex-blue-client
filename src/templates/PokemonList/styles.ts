@@ -70,11 +70,11 @@ export const Grid = styled.ul`
   padding: 1.2rem;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   grid-gap: 0.4rem;
-  grid-template-rows: repeat(auto-fill, minmax(15rem, 1fr));
-  overflow-y: auto;
+  grid-auto-columns: minmax(15rem, 1fr);
+  grid-auto-rows: 15rem;
   justify-items: center;
   overflow-x: hidden;
-
+  overflow-y: auto;
   &::-webkit-scrollbar {
     width: 0.8rem;
   }
@@ -88,11 +88,6 @@ export const Grid = styled.ul`
     border-radius: 0.4rem;
     background-color: white;
   }
-`;
-
-export const Item = styled.li`
-  width: 100%;
-  aspect-ratio: 1;
 `;
 
 const rotateReact = keyframes`
