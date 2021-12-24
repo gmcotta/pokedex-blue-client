@@ -12,4 +12,7 @@ module.exports = {
     '!src/utils/apollo.ts',
   ],
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
+  moduleNameMapper: {
+    '@/(.*)': '<rootDir>/src/$1',
+  },
 };

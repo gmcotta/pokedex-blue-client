@@ -2,7 +2,7 @@ import { screen, waitFor, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from '@testing-library/react-hooks';
 
-import { renderWithTheme } from '../../utils/testUtils';
+import { renderWithTheme } from '@/utils/testUtils';
 
 import Splash from '.';
 

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import PokemonGridItem from 'components/PokemonGridItem';
-import Pagination from 'components/Pagination';
-import { usePokemonListQuery } from 'hooks/usePokemonListQuery';
-import formatPokemonName from 'utils/formatPokemonName';
+import PokemonGridItem from '@/components/PokemonGridItem';
+import Pagination from '@/components/Pagination';
+import { usePokemonListQuery } from '@/hooks/usePokemonListQuery';
+import formatPokemonName from '@/utils/formatPokemonName';
 
 import * as S from './styles';
 

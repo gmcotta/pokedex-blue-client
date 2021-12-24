@@ -1,10 +1,10 @@
 import {
   GetPokemonList,
   GetPokemonListVariables,
-} from 'graphql/generated/GetPokemonList';
-import { GET_POKEMON_LIST } from 'graphql/queries/pokemonList';
-import PokemonListTemplate from 'templates/PokemonList';
-import { initializeApollo } from 'utils/apollo';
+} from '@/graphql/generated/GetPokemonList';
+import { GET_POKEMON_LIST } from '@/graphql/queries/pokemonList';
+import PokemonListTemplate from '@/templates/PokemonList';
+import { initializeApollo } from '@/utils/apollo';
 
 export default function PokemonList() {
   return <PokemonListTemplate />;
