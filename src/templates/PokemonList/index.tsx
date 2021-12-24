@@ -44,7 +44,11 @@ const PokemonListTemplate = () => {
       <S.Header>
         <div>
           <button>Filter</button>
-          <input defaultValue={pokemonName} />
+          <input
+            aria-label="pokemon name"
+            readOnly
+            defaultValue={pokemonName}
+          />
           <button>Settings</button>
         </div>
       </S.Header>
