@@ -1,5 +1,8 @@
+import Chip from '@/components/Chip';
 import { PokemonInfo } from '@/models/PokemonInfo';
+import formatPokemonHeight from '@/utils/formatPokemonHeight';
 import formatPokemonName from '@/utils/formatPokemonName';
+import formatPokemonWeight from '@/utils/formatPokemonWeight';
 
 import * as S from './styles';
 
@@ -29,17 +32,18 @@ const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
               <div>
                 <p>Type</p>
                 <div>
-                  <span>{details.pokemonTypes![0]}</span>
-                  <span>{details.pokemonTypes![1]}</span>
+                  {details.pokemonTypes?.map((type) => (
+                    <Chip key={type} name={type!} hasImage />
+                  ))}
                 </div>
               </div>
               <div>
                 <p>Height</p>
-                <span>{details.height}</span>
+                <p>{formatPokemonHeight(details.height!)}</p>
               </div>
               <div>
                 <p>Weight</p>
-                <span>{details.weight}</span>
+                <p>{formatPokemonWeight(details.weight!)}</p>
               </div>
             </div>
             <p>{details.description}</p>

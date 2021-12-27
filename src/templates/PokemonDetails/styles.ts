@@ -109,10 +109,6 @@ export const InfoCard = styled.div`
         p {
           font-size: 2.8rem;
         }
-
-        span {
-          font-size: 2.8rem;
-        }
       }
     }
 
