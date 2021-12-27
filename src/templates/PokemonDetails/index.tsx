@@ -23,7 +23,27 @@ const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
           <S.ImageCard>
             <img src={`${details.officialImageUrl}`} />
           </S.ImageCard>
-          <div>Info card</div>
+          <S.InfoCard>
+            <h2>{details.genus}</h2>
+            <div>
+              <div>
+                <p>Type</p>
+                <div>
+                  <span>{details.pokemonTypes![0]}</span>
+                  <span>{details.pokemonTypes![1]}</span>
+                </div>
+              </div>
+              <div>
+                <p>Height</p>
+                <span>{details.height}</span>
+              </div>
+              <div>
+                <p>Weight</p>
+                <span>{details.weight}</span>
+              </div>
+            </div>
+            <p>{details.description}</p>
+          </S.InfoCard>
         </S.InfoGrid>
       </S.Container>
       <S.Header></S.Header>

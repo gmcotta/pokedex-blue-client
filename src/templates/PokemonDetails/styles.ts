@@ -32,9 +32,9 @@ export const Container = styled.section`
     return css`
       width: 100%;
       height: 100%;
-      padding: 2.4rem 0;
+      padding: 2.4rem;
       overflow-x: hidden;
-      overflow-y: hidden;
+      overflow-y: auto;
       background-color: ${theme.colors.pokedex.screenOn};
       display: flex;
       flex-direction: column;
@@ -82,5 +82,47 @@ export const ImageCard = styled.div`
 `;
 
 export const InfoCard = styled.div`
-  ${() => css``}
+  ${({ theme }) => css`
+    background-color: #d1d1c0;
+    align-items: center;
+    padding: 2.4rem;
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      text-align: center;
+      font-size: 3.2rem;
+      font-weight: 400;
+    }
+
+    > div {
+      margin-top: 2.4rem;
+      width: 100%;
+
+      div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+          font-size: 2.8rem;
+        }
+
+        span {
+          font-size: 2.8rem;
+        }
+      }
+    }
+
+    > p {
+      background-color: ${theme.colors.white};
+      padding: 2.4rem;
+      font-size: 2.4rem;
+      border-radius: 0.8rem;
+      margin-top: 2.4rem;
+      flex: 1;
+    }
+  `}
 `;
