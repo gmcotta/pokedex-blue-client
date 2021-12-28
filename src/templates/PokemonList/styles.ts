@@ -75,6 +75,7 @@ export const Grid = styled.ul`
   justify-items: center;
   overflow-x: hidden;
   overflow-y: auto;
+
   &::-webkit-scrollbar {
     width: 0.8rem;
   }

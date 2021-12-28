@@ -28,7 +28,6 @@ type BarProps = {
 
 export const Bar = styled.span<BarProps>`
   ${({ theme, bgColor, barWidth }) => {
-    console.log(bgColor);
     return css`
       background: ${theme.colors.status[bgColor]};
       width: ${barWidth}%;
