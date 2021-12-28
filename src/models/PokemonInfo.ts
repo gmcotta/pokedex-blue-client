@@ -9,10 +9,11 @@ type PokemonStatus = {
   specialDefense: string | undefined;
 };
 
-type PokemonEvolutionStage = {
+export type PokemonEvolutionStage = {
   pokemonId: number | undefined;
   name: string | undefined;
   frontImageUrl: string | undefined;
+  pokemonTypes: [PokemonTypes, PokemonTypes?] | undefined;
 };
 
 export type PokemonInfo = {

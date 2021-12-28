@@ -82,6 +82,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
               pokemonId: stage?.pokemon?.data?.attributes?.pokemonId,
               name: stage?.pokemon?.data?.attributes?.name,
               frontImageUrl: `http://localhost:1337${stage?.pokemon?.data?.attributes?.frontImage.data?.attributes?.url}`,
+              pokemonTypes: stage?.pokemon?.data?.attributes?.types?.data.map(
+                (type) => type.attributes?.name
+              ),
             })
           ),
         secondStage:
@@ -90,6 +93,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
               pokemonId: stage?.pokemon?.data?.attributes?.pokemonId,
               name: stage?.pokemon?.data?.attributes?.name,
               frontImageUrl: `http://localhost:1337${stage?.pokemon?.data?.attributes?.frontImage.data?.attributes?.url}`,
+              pokemonTypes: stage?.pokemon?.data?.attributes?.types?.data.map(
+                (type) => type.attributes?.name
+              ),
             })
           ),
         thirdStage:
@@ -98,6 +104,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
               pokemonId: stage?.pokemon?.data?.attributes?.pokemonId,
               name: stage?.pokemon?.data?.attributes?.name,
               frontImageUrl: `http://localhost:1337${stage?.pokemon?.data?.attributes?.frontImage.data?.attributes?.url}`,
+              pokemonTypes: stage?.pokemon?.data?.attributes?.types?.data.map(
+                (type) => type.attributes?.name
+              ),
             })
           ),
       },
@@ -105,6 +114,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
   const props = propsMapped[0];
   return {
-    props: props,
+    props,
   };
 };
