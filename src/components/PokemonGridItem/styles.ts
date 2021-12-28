@@ -51,5 +51,3 @@ export const Wrapper = styled.li<WrapperProps>`
     `;
   }}
 `;
-
-export const ImageWrapper = styled.a``;

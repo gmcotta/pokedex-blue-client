@@ -1,6 +1,5 @@
 import { LiHTMLAttributes } from 'react';
 
-import Link from 'next/link';
 import formatPokemonName from '../../utils/formatPokemonName';
 
 import { PokemonGridItemProps as ModelProps } from 'models';
@@ -13,15 +12,17 @@ const PokemonGridItem = ({
   name,
   imgSrc,
   pokemonTypes,
+  onClick,
   ...props
 }: PokemonGridItemProps) => {
   return (
-    <S.Wrapper role="button" pokemonTypes={pokemonTypes} {...props}>
-      <Link href={`/pokemon/${pokemonId}`} passHref>
-        <S.ImageWrapper>
-          <img src={imgSrc} alt={formatPokemonName(pokemonId, name)} />
-        </S.ImageWrapper>
-      </Link>
+    <S.Wrapper
+      role="button"
+      pokemonTypes={pokemonTypes}
+      onClick={onClick}
+      {...props}
+    >
+      <img src={imgSrc} alt={formatPokemonName(pokemonId, name)} />
     </S.Wrapper>
   );
 };
