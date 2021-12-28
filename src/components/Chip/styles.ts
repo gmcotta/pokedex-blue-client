@@ -2,12 +2,12 @@ import { PokemonTypes } from '@/models';
 import styled, { css } from 'styled-components';
 
 type WrapperProps = {
-  color: string;
+  bgColor: PokemonTypes;
 };
 
 export const Wrapper = styled.div<WrapperProps>`
-  ${({ theme, color }) => css`
-    background-color: ${theme.colors.type[color as PokemonTypes]};
+  ${({ theme, bgColor }) => css`
+    background-color: ${theme.colors.type[bgColor]};
     padding: 0.4rem;
     height: 3.2rem;
     border-radius: 1.6rem;
