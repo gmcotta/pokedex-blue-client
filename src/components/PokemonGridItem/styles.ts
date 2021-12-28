@@ -9,25 +9,28 @@ type WrapperProps = {
 
 export const Wrapper = styled.li<WrapperProps>`
   ${({ pokemonTypes, theme }) => {
-    const firstPokemonType = rgba(theme.colors.type[pokemonTypes[0]], 0.3);
-    const secondPokemonType =
+    const firstPokemonTypeColor = pokemonTypes[0]
+      ? rgba(theme.colors.type[pokemonTypes[0]], 0.3)
+      : 'none';
+    const secondPokemonTypeColor =
       pokemonTypes[1] && rgba(theme.colors.type[pokemonTypes[1]], 0.3);
-    const backgroundStyle = secondPokemonType
+    const backgroundStyle = secondPokemonTypeColor
       ? `
       linear-gradient(
         45deg,
-        ${firstPokemonType} 0%,
-        ${secondPokemonType} 100%
+        ${firstPokemonTypeColor} 0%,
+        ${secondPokemonTypeColor} 100%
       );
     `
       : `
-        ${firstPokemonType}
+        ${firstPokemonTypeColor}
     `;
 
     return css`
       height: 100%;
       aspect-ratio: 1;
       border-radius: 6.4rem;
+      justify-self: center;
 
       &:hover,
       &:focus {
