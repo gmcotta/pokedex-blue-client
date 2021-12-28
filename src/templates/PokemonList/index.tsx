@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import PokemonGridItem from '@/components/PokemonGridItem';
 import Pagination from '@/components/Pagination';
@@ -9,6 +10,7 @@ import formatPokemonName from '@/utils/formatPokemonName';
 import * as S from './styles';
 
 const PokemonListTemplate = () => {
+  const { push } = useRouter();
   const [pokemonName, setPokemonName] = useState('');
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
@@ -38,6 +40,9 @@ const PokemonListTemplate = () => {
   const handleNextPage = () => {
     fetchMore({ variables: { page: page + 1, pageSize: 24 } });
     setPage(page + 1);
+  };
+  const handleGridItemClick = (id: number) => {
+    push(`/pokemon/${id}`);
   };
 
   return (
@@ -80,6 +85,7 @@ const PokemonListTemplate = () => {
                       )
                     }
                     onMouseLeave={handleMouseLeave}
+                    onClick={() => handleGridItemClick(p.attributes!.pokemonId)}
                   />
                 ))}
               </S.Grid>
