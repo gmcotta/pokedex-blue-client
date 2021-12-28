@@ -47,6 +47,21 @@ export interface GetPokemonById_pokemons_data_attributes_types {
   data: GetPokemonById_pokemons_data_attributes_types_data[];
 }
 
+export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_fistStage_pokemon_data_attributes_types_data_attributes {
+  __typename: "Type";
+  name: string;
+}
+
+export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_fistStage_pokemon_data_attributes_types_data {
+  __typename: "TypeEntity";
+  attributes: GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_fistStage_pokemon_data_attributes_types_data_attributes | null;
+}
+
+export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_fistStage_pokemon_data_attributes_types {
+  __typename: "TypeRelationResponseCollection";
+  data: GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_fistStage_pokemon_data_attributes_types_data[];
+}
+
 export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_fistStage_pokemon_data_attributes_frontImage_data_attributes {
   __typename: "UploadFile";
   url: string;
@@ -66,6 +81,7 @@ export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_at
   __typename: "Pokemon";
   pokemonId: number;
   name: string;
+  types: GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_fistStage_pokemon_data_attributes_types | null;
   frontImage: GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_fistStage_pokemon_data_attributes_frontImage;
 }
 
@@ -82,6 +98,21 @@ export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_at
 export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_fistStage {
   __typename: "ComponentPokemonFirstStage";
   pokemon: GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_fistStage_pokemon | null;
+}
+
+export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_secondStage_pokemon_data_attributes_types_data_attributes {
+  __typename: "Type";
+  name: string;
+}
+
+export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_secondStage_pokemon_data_attributes_types_data {
+  __typename: "TypeEntity";
+  attributes: GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_secondStage_pokemon_data_attributes_types_data_attributes | null;
+}
+
+export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_secondStage_pokemon_data_attributes_types {
+  __typename: "TypeRelationResponseCollection";
+  data: GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_secondStage_pokemon_data_attributes_types_data[];
 }
 
 export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_secondStage_pokemon_data_attributes_frontImage_data_attributes {
@@ -103,6 +134,7 @@ export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_at
   __typename: "Pokemon";
   pokemonId: number;
   name: string;
+  types: GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_secondStage_pokemon_data_attributes_types | null;
   frontImage: GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_secondStage_pokemon_data_attributes_frontImage;
 }
 
@@ -119,6 +151,21 @@ export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_at
 export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_secondStage {
   __typename: "ComponentPokemonFirstStage";
   pokemon: GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_secondStage_pokemon | null;
+}
+
+export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_thirdStage_pokemon_data_attributes_types_data_attributes {
+  __typename: "Type";
+  name: string;
+}
+
+export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_thirdStage_pokemon_data_attributes_types_data {
+  __typename: "TypeEntity";
+  attributes: GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_thirdStage_pokemon_data_attributes_types_data_attributes | null;
+}
+
+export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_thirdStage_pokemon_data_attributes_types {
+  __typename: "TypeRelationResponseCollection";
+  data: GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_thirdStage_pokemon_data_attributes_types_data[];
 }
 
 export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_thirdStage_pokemon_data_attributes_frontImage_data_attributes {
@@ -140,6 +187,7 @@ export interface GetPokemonById_pokemons_data_attributes_evolution_chain_data_at
   __typename: "Pokemon";
   pokemonId: number;
   name: string;
+  types: GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_thirdStage_pokemon_data_attributes_types | null;
   frontImage: GetPokemonById_pokemons_data_attributes_evolution_chain_data_attributes_thirdStage_pokemon_data_attributes_frontImage;
 }
 

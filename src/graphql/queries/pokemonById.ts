@@ -43,6 +43,13 @@ export const GET_POKEMON_BY_ID = gql`
                       attributes {
                         pokemonId
                         name
+                        types {
+                          data {
+                            attributes {
+                              name
+                            }
+                          }
+                        }
                         frontImage {
                           data {
                             attributes {
@@ -60,6 +67,13 @@ export const GET_POKEMON_BY_ID = gql`
                       attributes {
                         pokemonId
                         name
+                        types {
+                          data {
+                            attributes {
+                              name
+                            }
+                          }
+                        }
                         frontImage {
                           data {
                             attributes {
@@ -77,6 +91,13 @@ export const GET_POKEMON_BY_ID = gql`
                       attributes {
                         pokemonId
                         name
+                        types {
+                          data {
+                            attributes {
+                              name
+                            }
+                          }
+                        }
                         frontImage {
                           data {
                             attributes {
