@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MockedProvider } from '@apollo/client/testing';
 
@@ -6,6 +6,18 @@ import { renderWithTheme } from '@/utils/testUtils';
 
 import PokemonListTemplate from '.';
 import { PokemonListMockPageOne, PokemonListMockPageTwo } from './mocks';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+const push = jest.fn();
+const prefetch = jest.fn(() => Promise.resolve(true));
+useRouter.mockImplementation(() => ({
+  push,
+  prefetch,
+  query: '',
+  asPath: '',
+  route: '/',
+}));
 
 describe('<PokemonListTemplate />', () => {
   it('should render loading when starting the template', () => {
@@ -54,6 +66,22 @@ describe('<PokemonListTemplate />', () => {
     expect(
       await screen.findByRole('textbox', { name: /pokemon name/i })
     ).toHaveAttribute('value', '');
+  });
+
+  it('should call push when pokemon image is clicked', async () => {
+    renderWithTheme(
+      <MockedProvider mocks={[PokemonListMockPageOne]} addTypename={false}>
+        <PokemonListTemplate />
+      </MockedProvider>
+    );
+    expect(screen.getByText(/loading.../i)).toBeInTheDocument();
+
+    userEvent.click(
+      await screen.findByRole('img', { name: /#001 - bulbasaur/i })
+    );
+    await waitFor(() => {
+      expect(push).toHaveBeenCalledWith('/pokemon/1');
+    });
   });
 
   it('should go to next page and previous page', async () => {

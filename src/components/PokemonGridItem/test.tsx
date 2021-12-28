@@ -10,6 +10,18 @@ import PokemonGridItem from '.';
 const pokemonWithOneType = pokemonMock[3];
 const pokemonWithTwoTypes = pokemonMock[0];
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+const push = jest.fn();
+const prefetch = jest.fn(() => Promise.resolve(true));
+useRouter.mockImplementation(() => ({
+  push,
+  prefetch,
+  query: '',
+  asPath: '',
+  route: '/',
+}));
+
 describe('<PokemonGridItem />', () => {
   it('should render the component with pokemon with one type', () => {
     const { pokemonId, imgSrc, name, pokemonTypes } = pokemonWithOneType;
