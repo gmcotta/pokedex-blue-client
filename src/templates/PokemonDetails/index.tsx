@@ -14,9 +14,11 @@ const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
   return (
     <S.Wrapper>
       <S.Header>
-        <button type="button">Info</button>
-        <button type="button">Status</button>
-        <button type="button">Evolution</button>
+        <div>
+          <button type="button">Info</button>
+          <button type="button">Status</button>
+          <button type="button">Evolution</button>
+        </div>
       </S.Header>
       <S.Container>
         <S.PokemonName>
@@ -50,7 +52,6 @@ const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
           </S.InfoCard>
         </S.InfoGrid>
       </S.Container>
-      <S.Header></S.Header>
     </S.Wrapper>
   );
 };

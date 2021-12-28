@@ -1,23 +1,23 @@
 import styled, { css, keyframes } from 'styled-components';
 
+import HeaderComponent from '@/components/Header';
+
 export const Wrapper = styled.main`
   display: flex;
   flex-direction: column;
   height: 100%;
 `;
 
-export const Header = styled.header`
-  ${({ theme }) => css`
-    width: 100%;
-    height: 6.4rem;
-    background-color: ${theme.colors.gray};
+export const Header = styled(HeaderComponent)`
+  div {
+    width: 80%;
+    max-width: 100rem;
+    margin: 0 auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    z-index: 10;
-
-    & > div {
+    justify-content: space-between;
+  }
+  ${() => css`
+    div {
       width: 80%;
       max-width: 100rem;
       margin: 0 auto;
