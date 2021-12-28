@@ -4,18 +4,23 @@ import * as S from './styles';
 type StatusBarProps = {
   name: string;
   status: PokemonStatus;
-  value?: string;
+  value: string;
 };
 
 const StatusBar = ({ name, value, status }: StatusBarProps) => {
   function calculateBarWidth(value: string) {
-    return String((Number(value) / 255) * 100);
+    const result = ((Number(value) / 255) * 100).toFixed(2);
+    return result;
   }
   return (
     <S.Wrapper>
       <p>{`${name} - ${value}`}</p>
       <div>
-        <S.Bar barWidth={calculateBarWidth(value!)} bgColor={status} />
+        <S.Bar
+          aria-label={status}
+          barWidth={calculateBarWidth(value!)}
+          bgColor={status}
+        />
       </div>
     </S.Wrapper>
   );
