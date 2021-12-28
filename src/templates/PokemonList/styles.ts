@@ -45,7 +45,7 @@ export const Container = styled.section`
 export const ListContainer = styled.section`
   ${() => css`
     position: absolute;
-    bottom: 4rem;
+    top: calc(6.4rem + 4rem);
     width: 80%;
     max-width: 100rem;
     height: calc(90% - 6.4rem);
@@ -60,6 +60,7 @@ export const ListContainer = styled.section`
     border-radius: 6.4rem;
     display: flex;
     flex-direction: column;
+    max-height: 70rem;
   `}
 `;
 

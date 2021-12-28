@@ -67,7 +67,7 @@ export const ImageCard = styled.div`
     aspect-ratio: 1;
     border: 1.6rem solid orange;
     border-radius: 1.6rem;
-    align-self: center;
+    align-self: start;
   `}
 `;
 
@@ -79,6 +79,7 @@ export const InfoCard = styled.div`
     border-radius: 0.8rem;
     display: flex;
     flex-direction: column;
+    max-height: 54rem;
 
     h2 {
       text-align: center;
@@ -122,6 +123,7 @@ export const StatusCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    max-height: 54rem;
   `}
 `;
 
