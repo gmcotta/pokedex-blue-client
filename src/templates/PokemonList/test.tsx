@@ -1,11 +1,11 @@
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { MockedProvider } from '@apollo/client/testing';
 
 import { renderWithTheme } from '@/utils/testUtils';
 
 import PokemonListTemplate from '.';
 import { PokemonListMockPageOne, PokemonListMockPageTwo } from './mocks';
-import userEvent from '@testing-library/user-event';
 
 describe('<PokemonListTemplate />', () => {
   it('should render loading when starting the template', () => {

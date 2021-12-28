@@ -1,11 +1,11 @@
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { renderWithTheme } from '../../utils/testUtils';
+import { renderWithTheme } from '@/utils/testUtils';
+import formatPokemonName from '@/utils/formatPokemonName';
 
-import PokemonGridItem from '.';
 import pokemonMock from './mock';
-import formatPokemonName from '../../utils/formatPokemonName';
+import PokemonGridItem from '.';
 
 const pokemonWithOneType = pokemonMock[3];
 const pokemonWithTwoTypes = pokemonMock[0];
