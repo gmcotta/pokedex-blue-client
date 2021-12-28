@@ -7,8 +7,10 @@ type ChipProps = {
 
 const Chip = ({ name, hasImage = false }: ChipProps) => {
   return (
-    <S.Wrapper color={name}>
-      {hasImage && <img src={`/images/pokemonTypes/${name}.svg`} alt={name} />}
+    <S.Wrapper aria-label={`${name}-chip`} color={name}>
+      {hasImage && (
+        <img src={`/images/pokemonTypes/${name}.svg`} alt={`${name}-logo`} />
+      )}
       <span>{name}</span>
     </S.Wrapper>
   );
