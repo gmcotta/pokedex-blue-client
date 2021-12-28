@@ -29,7 +29,7 @@ export const Container = styled.section`
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
     `;
   }}
 `;
@@ -111,4 +111,80 @@ export const InfoCard = styled.div`
       flex: 1;
     }
   `}
+`;
+
+export const StatusCard = styled.div`
+  ${() => css`
+    background-color: #d1d1c0;
+    align-items: center;
+    padding: 2.4rem;
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  `}
+`;
+
+type EvolutionGridProps = {
+  numberOfStages: number;
+};
+
+export const EvolutionGrid = styled.div<EvolutionGridProps>`
+  ${({ numberOfStages }) => css`
+    display: grid;
+    grid-template-columns: repeat(${numberOfStages}, 1fr);
+    margin-top: 2.4rem;
+    padding-top: 2.4rem;
+    grid-gap: 2.4rem;
+    width: 100%;
+    height: 100%;
+    max-width: 100rem;
+    max-height: 54rem;
+    justify-items: center;
+    background-color: rgba(196, 196, 196, 0.5);
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+      inset 0px 4px 4px rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(1rem);
+    border-radius: 3.2rem;
+  `}
+`;
+
+export const StageContainer = styled.div`
+  ${({ theme }) => css`
+    h2 {
+      color: ${theme.colors.black};
+      font-weight: 300;
+      font-size: 2.8rem;
+    }
+  `}
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 0.8rem;
+  overflow-y: auto;
+`;
+
+export const StageGrid = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  grid-gap: 0.4rem;
+  grid-auto-rows: 12rem;
+  padding: 0.8rem;
+  width: 100%;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: none;
+    margin-bottom: 2.4rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.4rem;
+    background-color: white;
+  }
 `;
