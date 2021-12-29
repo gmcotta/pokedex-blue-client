@@ -28,6 +28,35 @@ type TabOptions = 'info' | 'status' | 'evolution';
 const FIRST_POKEMON_NUMBER = 1;
 const LAST_POKEMON_NUMBER = 898;
 
+type StageSectionProps = {
+  title: string;
+  stageInfo: PokemonEvolutionStage[] | undefined;
+};
+
+const StageSection = ({ title, stageInfo }: StageSectionProps) => {
+  const { push } = useRouter();
+  const handleGridItemClick = (id: number) => {
+    push(`/pokemon/${id}`);
+  };
+  return (
+    <S.StageContainer>
+      <h2>{title}</h2>
+      <S.StageGrid>
+        {stageInfo!.map((pokemon) => (
+          <PokemonGridItem
+            key={pokemon.pokemonId!}
+            imgSrc={pokemon.frontImageUrl!}
+            name={pokemon.name!}
+            pokemonId={pokemon.pokemonId!}
+            pokemonTypes={pokemon.pokemonTypes!}
+            onClick={() => handleGridItemClick(pokemon.pokemonId!)}
+          />
+        ))}
+      </S.StageGrid>
+    </S.StageContainer>
+  );
+};
+
 const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
   const { push, asPath } = useRouter();
 
@@ -49,10 +78,6 @@ const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
       if (evolution[stage as StageNames]!.length > 0) count++;
     }
     return count;
-  };
-
-  const handleGridItemClick = (id: number) => {
-    push(`/pokemon/${id}`);
   };
 
   const handlePreviousPokemon = () => {
@@ -87,62 +112,32 @@ const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
             numberOfStages={countEvolutionStages(details.evolutionChain)}
           >
             {details.evolutionChain.firstStage!.length > 0 && (
-              <S.StageContainer>
-                <h2>First Stage</h2>
-                <S.StageGrid>
-                  {details.evolutionChain.firstStage!.map((pokemon) => (
-                    <PokemonGridItem
-                      key={pokemon.pokemonId!}
-                      imgSrc={pokemon.frontImageUrl!}
-                      name={pokemon.name!}
-                      pokemonId={pokemon.pokemonId!}
-                      pokemonTypes={pokemon.pokemonTypes!}
-                      onClick={() => handleGridItemClick(pokemon.pokemonId!)}
-                    />
-                  ))}
-                </S.StageGrid>
-              </S.StageContainer>
+              <StageSection
+                title="First Stage"
+                stageInfo={details.evolutionChain.firstStage}
+              />
             )}
             {details.evolutionChain.secondStage!.length > 0 && (
-              <S.StageContainer>
-                <h2>Second Stage</h2>
-                <S.StageGrid>
-                  {details.evolutionChain.secondStage!.map((pokemon) => (
-                    <PokemonGridItem
-                      key={pokemon.pokemonId!}
-                      imgSrc={pokemon.frontImageUrl!}
-                      name={pokemon.name!}
-                      pokemonId={pokemon.pokemonId!}
-                      pokemonTypes={pokemon.pokemonTypes!}
-                      onClick={() => handleGridItemClick(pokemon.pokemonId!)}
-                    />
-                  ))}
-                </S.StageGrid>
-              </S.StageContainer>
+              <StageSection
+                title="Second Stage"
+                stageInfo={details.evolutionChain.secondStage}
+              />
             )}
             {details.evolutionChain.thirdStage!.length > 0 && (
-              <S.StageContainer>
-                <h2>Third Stage</h2>
-                <S.StageGrid>
-                  {details.evolutionChain.thirdStage!.map((pokemon) => (
-                    <PokemonGridItem
-                      key={pokemon.pokemonId!}
-                      imgSrc={pokemon.frontImageUrl!}
-                      name={pokemon.name!}
-                      pokemonId={pokemon.pokemonId!}
-                      pokemonTypes={pokemon.pokemonTypes!}
-                      onClick={() => handleGridItemClick(pokemon.pokemonId!)}
-                    />
-                  ))}
-                </S.StageGrid>
-              </S.StageContainer>
+              <StageSection
+                title="Third Stage"
+                stageInfo={details.evolutionChain.thirdStage}
+              />
             )}
           </S.EvolutionGrid>
         )}
         {activeTab !== 'evolution' && (
           <S.InfoGrid>
             <S.ImageCard>
-              <img src={`${details.officialImageUrl}`} />
+              <img
+                src={`${details.officialImageUrl}`}
+                alt={`${details.pokemonId} - official image`}
+              />
             </S.ImageCard>
             {activeTab === 'info' && (
               <S.InfoCard>
