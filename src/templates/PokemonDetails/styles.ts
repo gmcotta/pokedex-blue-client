@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import HeaderComponent from '@/components/Header';
+import FooterComponent from '@/components/Footer';
 
 export const Wrapper = styled.main`
   display: flex;
@@ -11,6 +12,17 @@ export const Wrapper = styled.main`
 export const Header = styled(HeaderComponent)`
   div {
     width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
+
+export const Footer = styled(FooterComponent)`
+  div {
+    width: 100%;
+    max-width: 100rem;
+    padding: 0 0.8rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -106,7 +118,7 @@ export const InfoCard = styled.div`
     > p {
       background-color: ${theme.colors.white};
       padding: 2.4rem;
-      font-size: 2.4rem;
+      font-size: 2rem;
       border-radius: 0.8rem;
       margin-top: 2.4rem;
       flex: 1;

@@ -25,26 +25,42 @@ type StageNames = 'firstStage' | 'secondStage' | 'thirdStage';
 
 type TabOptions = 'info' | 'status' | 'evolution';
 
-const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
-  const [activeTab, setActiveTab] = useState<TabOptions>('info');
-  const { push } = useRouter();
+const FIRST_POKEMON_NUMBER = 1;
+const LAST_POKEMON_NUMBER = 898;
 
+const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
+  const { push, asPath } = useRouter();
+
+  const [activeTab, setActiveTab] = useState<TabOptions>('info');
+  const [currentPokemon, setCurrentPokemon] = useState(0);
+
+  useEffect(() => {
+    const [, , pokemon] = asPath.split('/');
+    setCurrentPokemon(Number(pokemon));
+  }, [asPath]);
   useEffect(() => {
     setActiveTab('info');
   }, [push]);
 
-  function countEvolutionStages(evolution: EvolutionChain) {
+  const countEvolutionStages = (evolution: EvolutionChain) => {
     let count = 0;
     const stages = Object.keys(evolution);
     for (const stage of stages) {
       if (evolution[stage as StageNames]!.length > 0) count++;
     }
     return count;
-  }
+  };
 
   const handleGridItemClick = (id: number) => {
-    console.log('click');
     push(`/pokemon/${id}`);
+  };
+
+  const handlePreviousPokemon = () => {
+    push(`/pokemon/${currentPokemon - 1}`);
+  };
+
+  const handleNextPokemon = () => {
+    push(`/pokemon/${currentPokemon + 1}`);
   };
 
   return (
@@ -184,9 +200,25 @@ const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
             )}
           </S.InfoGrid>
         )}
-
-        {/*  */}
       </S.Container>
+      <S.Footer>
+        <div>
+          <button
+            type="button"
+            onClick={() => handlePreviousPokemon()}
+            disabled={currentPokemon === FIRST_POKEMON_NUMBER}
+          >
+            Previous Pokémon
+          </button>
+          <button
+            type="button"
+            onClick={() => handleNextPokemon()}
+            disabled={currentPokemon === LAST_POKEMON_NUMBER}
+          >
+            Next Pokémon
+          </button>
+        </div>
+      </S.Footer>
     </S.Wrapper>
   );
 };
