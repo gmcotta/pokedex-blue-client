@@ -28,6 +28,15 @@ jest.mock('@/components/StatusBar', () => {
   };
 });
 
+jest.mock('@/components/StageSection', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="StageSection mock"></div>;
+    },
+  };
+});
+
 describe('<PokemonDetailsTemplate />', () => {
   afterEach(cleanup);
   it('should render the component with info tab active', () => {
@@ -112,24 +121,7 @@ describe('<PokemonDetailsTemplate />', () => {
       })
     );
     await waitFor(() => {
-      expect(
-        screen.getByRole('heading', { name: /first stage/i })
-      ).toBeInTheDocument();
-      expect(
-        screen.getByRole('img', { name: /#001 - bulbasaur/i })
-      ).toBeInTheDocument();
-      expect(
-        screen.getByRole('heading', { name: /second stage/i })
-      ).toBeInTheDocument();
-      expect(
-        screen.getByRole('img', { name: /#002 - ivysaur/i })
-      ).toBeInTheDocument();
-      expect(
-        screen.getByRole('heading', { name: /third stage/i })
-      ).toBeInTheDocument();
-      expect(
-        screen.getByRole('img', { name: /#003 - venusaur/i })
-      ).toBeInTheDocument();
+      expect(screen.getAllByTestId(/stagesection mock/i)).toHaveLength(3);
     });
   });
 
@@ -154,22 +146,7 @@ describe('<PokemonDetailsTemplate />', () => {
     });
   });
 
-  it('should go to pokemon details page when pokemon image is clicked', async () => {
-    renderWithTheme(<PokemonDetailsTemplate details={firstPokemonMock} />);
-    userEvent.click(
-      screen.getByRole('button', {
-        name: /evolution/i,
-      })
-    );
-    userEvent.click(
-      await screen.findByRole('img', { name: /#003 - venusaur/i })
-    );
-    await waitFor(() => {
-      expect(push).toHaveBeenCalledWith('/pokemon/3');
-    });
-  });
-
-  it('should go to next pokemon', async () => {
+  it('should call push to next pokemon', async () => {
     renderWithTheme(<PokemonDetailsTemplate details={firstPokemonMock} />);
     act(() => {
       userEvent.click(
@@ -183,7 +160,7 @@ describe('<PokemonDetailsTemplate />', () => {
     });
   });
 
-  it('should go to previous pokemon', async () => {
+  it('should call push to previous pokemon', async () => {
     renderWithTheme(<PokemonDetailsTemplate details={lastPokemonMock} />);
     act(() => {
       userEvent.click(
