@@ -6,7 +6,7 @@ import Header from '.';
 describe('<Header />', () => {
   it('should render the component', () => {
     renderWithTheme(<Header>Header</Header>);
-    screen.logTestingPlaygroundURL();
     expect(screen.getByRole('banner')).toBeInTheDocument();
+    expect(screen.getByText(/header/i)).toBeInTheDocument();
   });
 });
