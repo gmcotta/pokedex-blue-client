@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import Chip from '@/components/Chip';
-import PokemonGridItem from '@/components/PokemonGridItem';
 import StatusBar from '@/components/StatusBar';
+import StageSection from '@/components/StageSection';
 import { PokemonEvolutionStage, PokemonInfo } from '@/models/PokemonInfo';
 import formatPokemonHeight from '@/utils/formatPokemonHeight';
 import formatPokemonName from '@/utils/formatPokemonName';
 import formatPokemonWeight from '@/utils/formatPokemonWeight';
 
 import * as S from './styles';
-import { useRouter } from 'next/router';
 
 type PokemonDetailsTemplateProps = {
   details: PokemonInfo;
@@ -27,35 +27,6 @@ type TabOptions = 'info' | 'status' | 'evolution';
 
 const FIRST_POKEMON_NUMBER = 1;
 const LAST_POKEMON_NUMBER = 898;
-
-type StageSectionProps = {
-  title: string;
-  stageInfo: PokemonEvolutionStage[] | undefined;
-};
-
-const StageSection = ({ title, stageInfo }: StageSectionProps) => {
-  const { push } = useRouter();
-  const handleGridItemClick = (id: number) => {
-    push(`/pokemon/${id}`);
-  };
-  return (
-    <S.StageContainer>
-      <h2>{title}</h2>
-      <S.StageGrid>
-        {stageInfo!.map((pokemon) => (
-          <PokemonGridItem
-            key={pokemon.pokemonId!}
-            imgSrc={pokemon.frontImageUrl!}
-            name={pokemon.name!}
-            pokemonId={pokemon.pokemonId!}
-            pokemonTypes={pokemon.pokemonTypes!}
-            onClick={() => handleGridItemClick(pokemon.pokemonId!)}
-          />
-        ))}
-      </S.StageGrid>
-    </S.StageContainer>
-  );
-};
 
 const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
   const { push, asPath } = useRouter();
