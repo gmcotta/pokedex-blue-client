@@ -8,6 +8,7 @@ import { PokemonTypes } from '@/models';
 import formatPokemonName from '@/utils/formatPokemonName';
 
 import * as S from './styles';
+import { FilterIcon, SettingsIcon } from '@/components/Icons';
 
 const PokemonListTemplate = () => {
   const { push } = useRouter();
@@ -51,13 +52,13 @@ const PokemonListTemplate = () => {
     <S.Wrapper>
       <S.Header>
         <div>
-          <button>Filter</button>
-          <input
-            aria-label="pokemon name"
-            readOnly
-            defaultValue={pokemonName}
-          />
-          <button>Settings</button>
+          <button type="button">
+            <FilterIcon size="small" />
+          </button>
+          <span aria-label="pokemon name">{pokemonName}</span>
+          <button type="button">
+            <SettingsIcon size="small" />
+          </button>
         </div>
       </S.Header>
       <S.Container>

@@ -9,20 +9,49 @@ export const Wrapper = styled.main`
 `;
 
 export const Header = styled(HeaderComponent)`
-  div {
-    width: 80%;
-    max-width: 100rem;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-  }
-  ${() => css`
+  ${({ theme }) => css`
     div {
       width: 80%;
       max-width: 100rem;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
+
+      > button {
+        border: none;
+        background-color: ${theme.colors.white};
+        padding: 0.8rem;
+        border-radius: 50%;
+        width: 4rem;
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      > span {
+        height: 4rem;
+        width: 30rem;
+        border-radius: 2rem;
+        border: none;
+        background-color: ${theme.colors.white};
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+      }
+
+      div {
+        width: 80%;
+        max-width: 100rem;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+      }
     }
   `}
 `;
@@ -74,6 +103,10 @@ export const ListHeader = styled.header`
     > span {
       color: ${theme.colors.white};
       font-size: 2rem;
+    }
+
+    @media (max-width: ${theme.breakpoints.md}) {
+      flex-direction: column;
     }
   `}
 `;
