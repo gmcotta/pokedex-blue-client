@@ -52,6 +52,22 @@ export default {
     lg: '900px',
     xl: '1200px',
   },
+  icons: {
+    sizes: {
+      small: {
+        width: 16,
+        height: 16,
+      },
+      medium: {
+        width: 24,
+        height: 24,
+      },
+      large: {
+        width: 32,
+        height: 32,
+      },
+    },
+  },
   font: {
     family:
       "'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
