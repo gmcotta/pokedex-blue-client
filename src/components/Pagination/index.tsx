@@ -15,13 +15,13 @@ const Pagination = ({
 }: PaginationProps) => {
   return (
     <S.Wrapper>
-      <button disabled={actualPage === 1} onClick={handlePrevPage}>
-        Previous page
-      </button>
-      <input aria-label="actual page" readOnly value={actualPage} />
-      <button disabled={actualPage === lastPage} onClick={handleNextPage}>
-        Next page
-      </button>
+      <S.PrevButton disabled={actualPage === 1} onClick={handlePrevPage}>
+        Prev
+      </S.PrevButton>
+      <S.CurrentPage aria-label="actual page">{`Page ${actualPage} of ${lastPage}`}</S.CurrentPage>
+      <S.NextButton disabled={actualPage === lastPage} onClick={handleNextPage}>
+        Next
+      </S.NextButton>
     </S.Wrapper>
   );
 };
