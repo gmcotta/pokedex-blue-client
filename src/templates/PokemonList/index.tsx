@@ -14,6 +14,7 @@ const PokemonListTemplate = () => {
   const [pokemonName, setPokemonName] = useState('');
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
+  const [pokemonTotal, setPokemonTotal] = useState(0);
   const { data, loading, fetchMore } = usePokemonListQuery({
     variables: {
       page,
@@ -24,6 +25,7 @@ const PokemonListTemplate = () => {
   useEffect(() => {
     if (data) {
       setLastPage(data?.pokemons!.meta.pagination.pageCount);
+      setPokemonTotal(data?.pokemons!.meta.pagination.total);
     }
   }, [data, page]);
 
@@ -60,6 +62,15 @@ const PokemonListTemplate = () => {
       </S.Header>
       <S.Container>
         <S.ListContainer>
+          <S.ListHeader>
+            <Pagination
+              actualPage={page}
+              lastPage={lastPage}
+              handlePrevPage={handlePrevPage}
+              handleNextPage={handleNextPage}
+            />
+            <span>{pokemonTotal} Pokémon found</span>
+          </S.ListHeader>
           {loading ? (
             <S.Loading>Loading...</S.Loading>
           ) : (
@@ -89,12 +100,6 @@ const PokemonListTemplate = () => {
                   />
                 ))}
               </S.Grid>
-              <Pagination
-                actualPage={page}
-                lastPage={lastPage}
-                handlePrevPage={handlePrevPage}
-                handleNextPage={handleNextPage}
-              />
             </>
           )}
         </S.ListContainer>

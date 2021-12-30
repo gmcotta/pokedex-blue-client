@@ -64,6 +64,20 @@ export const ListContainer = styled.section`
   `}
 `;
 
+export const ListHeader = styled.header`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem;
+
+    > span {
+      color: ${theme.colors.white};
+      font-size: 2rem;
+    }
+  `}
+`;
+
 export const Grid = styled.ul`
   width: 100%;
   height: 100%;
