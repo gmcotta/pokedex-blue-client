@@ -10,6 +10,7 @@ import formatPokemonName from '@/utils/formatPokemonName';
 import formatPokemonWeight from '@/utils/formatPokemonWeight';
 
 import * as S from './styles';
+import { BackIcon, SettingsIcon } from '@/components/Icons';
 
 type PokemonDetailsTemplateProps = {
   details: PokemonInfo;
@@ -63,19 +64,35 @@ const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
     <S.Wrapper>
       <S.Header>
         <div>
-          <button onClick={() => back()}>Back</button>
+          <button onClick={() => back()}>
+            <BackIcon color="black" size="small" />
+          </button>
           <div>
-            <button onClick={() => setActiveTab('info')} type="button">
+            <S.TabTitle
+              isActive={activeTab === 'info'}
+              onClick={() => setActiveTab('info')}
+              role="button"
+            >
               Info
-            </button>
-            <button onClick={() => setActiveTab('status')} type="button">
+            </S.TabTitle>
+            <S.TabTitle
+              isActive={activeTab === 'status'}
+              onClick={() => setActiveTab('status')}
+              role="button"
+            >
               Status
-            </button>
-            <button onClick={() => setActiveTab('evolution')} type="button">
+            </S.TabTitle>
+            <S.TabTitle
+              isActive={activeTab === 'evolution'}
+              onClick={() => setActiveTab('evolution')}
+              role="button"
+            >
               Evolution
-            </button>
+            </S.TabTitle>
           </div>
-          <button>Settings</button>
+          <button>
+            <SettingsIcon color="black" size="small" />
+          </button>
         </div>
       </S.Header>
       <S.Container>

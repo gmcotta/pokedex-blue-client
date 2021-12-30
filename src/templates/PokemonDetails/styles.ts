@@ -11,20 +11,68 @@ export const Wrapper = styled.main`
 `;
 
 export const Header = styled(HeaderComponent)`
-  > div {
-    width: 100%;
-    max-width: 100rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+  ${({ theme }) => css`
     > div {
+      width: 100%;
+      max-width: 100rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 40%;
+
+      > button {
+        border: none;
+        background-color: ${theme.colors.white};
+        padding: 0.8rem;
+        border-radius: 50%;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 40%;
+      }
     }
-  }
+  `}
+`;
+
+type TabTitleProps = {
+  isActive: boolean;
+};
+
+export const TabTitle = styled.span<TabTitleProps>`
+  ${({ theme, isActive }) => css`
+     {
+      position: relative;
+      padding: 0.2rem 0;
+      font-size: 1.6rem;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 2px;
+        width: ${isActive ? '100%' : '0%'};
+        background-color: ${theme.colors.black};
+      }
+      &:hover {
+        cursor: pointer;
+      }
+      &:hover::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 2px;
+        width: 100%;
+        background-color: ${theme.colors.black};
+        transition: width 0.3s ease-in-out;
+      }
+    }
+  `}
 `;
 
 export const Footer = styled(FooterComponent)`
