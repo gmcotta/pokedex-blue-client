@@ -25,7 +25,7 @@ const SplashTemplate = () => {
           />
           <S.Subtitle>Pokédex - React Version</S.Subtitle>
         </>
-        <S.Button onClick={handleStartAnimation}>Iniciar</S.Button>
+        <S.Button onClick={handleStartAnimation}>Start</S.Button>
       </S.Overlay>
       <S.Device animationTriggered={isAnimationTriggered}>
         <S.UpperScreen>

@@ -169,20 +169,20 @@ const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
       </S.Container>
       <S.Footer>
         <div>
-          <button
+          <S.Button
             type="button"
             onClick={() => handlePreviousPokemon()}
             disabled={currentPokemon === FIRST_POKEMON_NUMBER}
           >
             Previous Pokémon
-          </button>
-          <button
+          </S.Button>
+          <S.Button
             type="button"
             onClick={() => handleNextPokemon()}
             disabled={currentPokemon === LAST_POKEMON_NUMBER}
           >
             Next Pokémon
-          </button>
+          </S.Button>
         </div>
       </S.Footer>
     </S.Wrapper>

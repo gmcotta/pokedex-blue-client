@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { darken } from 'polished';
 
 import HeaderComponent from '@/components/Header';
 import FooterComponent from '@/components/Footer';
@@ -49,6 +50,8 @@ export const Container = styled.section`
 export const PokemonName = styled.h1`
   ${({ theme }) => css`
     font-size: 4rem;
+    letter-spacing: 0.4rem;
+    font-family: 'Odibee Sans', sans-serif;
     color: ${theme.colors.white};
     background-color: rgba(196, 196, 196, 0.5);
     border: 4px solid rgba(255, 255, 255, 0.3);
@@ -193,6 +196,30 @@ export const EvolutionGrid = styled.div<EvolutionGridProps>`
       grid-template-columns: none;
       grid-template-rows: repeat(${numberOfStages}, 1fr);
       max-height: 100rem;
+    }
+  `}
+`;
+
+export const Button = styled.button`
+  ${({ theme }) => css`
+    padding: 0.8rem 1.6rem;
+    border: none;
+    height: 3.2rem;
+    border-radius: 1.6rem;
+    background-color: ${theme.colors.white};
+    line-height: 1.6rem;
+    transition: all 0.3s ease-in-out;
+
+    &:not([disabled]):hover {
+      cursor: pointer;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+        inset 0px 4px 4px rgba(255, 255, 255, 0.25);
+      transform: translateY(-0.2rem);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: ${darken(0.1, theme.colors.white)};
     }
   `}
 `;

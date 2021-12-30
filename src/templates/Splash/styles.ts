@@ -1,3 +1,4 @@
+import { darken } from 'polished';
 import styled, { css, keyframes, DefaultTheme } from 'styled-components';
 
 export const Container = styled.main`
@@ -276,8 +277,11 @@ export const TitleLogo = styled.img`
 
 export const Subtitle = styled.h2`
   ${({ theme }) => css`
+    font-weight: 400;
+    font-family: 'Odibee Sans', sans-serif;
+    letter-spacing: 1rem;
     font-size: ${theme.font.sizes.xl};
-    color: #c4dced;
+    color: ${theme.colors.gray};
 
     @media (max-width: ${theme.breakpoints.md}) {
       font-size: ${theme.font.sizes.lg};
@@ -289,27 +293,63 @@ export const Subtitle = styled.h2`
   `}
 `;
 
+// export const Button = styled.button`
+//   ${({ theme }) => css`
+//     background: linear-gradient(180deg, #83b8e9 25%, #2390f4 100%);
+//     font-size: ${theme.font.sizes.sm};
+//     color: ${theme.colors.gray};
+//     height: 4.8rem;
+//     padding: 0.8rem 1.6rem;
+//     border-radius: 0.8rem;
+//     margin-top: 2.4rem;
+//     border: 0;
+//     border-bottom: 4px solid #2d41f0;
+
+//     &:hover {
+//       filter: brightness(0.8);
+
+//       cursor: pointer;
+//       transition: filter 200ms ease-in;
+//     }
+
+//     &:active {
+//       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//     }
+//   `}
+// `;
+
 export const Button = styled.button`
   ${({ theme }) => css`
-    background: linear-gradient(180deg, #83b8e9 25%, #2390f4 100%);
-    font-size: ${theme.font.sizes.sm};
-    color: ${theme.colors.gray};
-    height: 4.8rem;
-    padding: 0.8rem 1.6rem;
-    border-radius: 0.8rem;
-    margin-top: 2.4rem;
-    border: 0;
-    border-bottom: 4px solid #2d41f0;
+    padding: 1.6rem 3.2rem;
+    border: none;
+    height: 5.6rem;
+    border-radius: 2.8rem;
+    background-color: ${theme.colors.white};
+    transition: all 0.3s ease-in-out;
+    font-family: 'Odibee Sans', sans-serif;
+    font-size: 4rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.4rem;
 
-    &:hover {
-      filter: brightness(0.8);
-
-      cursor: pointer;
-      transition: filter 200ms ease-in;
+    @media (max-width: 768px) {
+      height: 4.8rem;
+      border-radius: 2.4rem;
+      font-size: 3.2rem;
     }
 
-    &:active {
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    &:not([disabled]):hover {
+      cursor: pointer;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+        inset 0px 4px 4px rgba(255, 255, 255, 0.25);
+      transform: translateY(-0.2rem);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: ${darken(0.1, theme.colors.white)};
     }
   `}
 `;
