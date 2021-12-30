@@ -29,7 +29,7 @@ const FIRST_POKEMON_NUMBER = 1;
 const LAST_POKEMON_NUMBER = 898;
 
 const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
-  const { push, asPath } = useRouter();
+  const { push, asPath, back } = useRouter();
 
   const [activeTab, setActiveTab] = useState<TabOptions>('info');
   const [currentPokemon, setCurrentPokemon] = useState(0);
@@ -63,15 +63,19 @@ const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
     <S.Wrapper>
       <S.Header>
         <div>
-          <button onClick={() => setActiveTab('info')} type="button">
-            Info
-          </button>
-          <button onClick={() => setActiveTab('status')} type="button">
-            Status
-          </button>
-          <button onClick={() => setActiveTab('evolution')} type="button">
-            Evolution
-          </button>
+          <button onClick={() => back()}>Back</button>
+          <div>
+            <button onClick={() => setActiveTab('info')} type="button">
+              Info
+            </button>
+            <button onClick={() => setActiveTab('status')} type="button">
+              Status
+            </button>
+            <button onClick={() => setActiveTab('evolution')} type="button">
+              Evolution
+            </button>
+          </div>
+          <button>Settings</button>
         </div>
       </S.Header>
       <S.Container>

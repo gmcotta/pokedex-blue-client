@@ -11,11 +11,19 @@ export const Wrapper = styled.main`
 `;
 
 export const Header = styled(HeaderComponent)`
-  div {
-    width: 40%;
+  > div {
+    width: 100%;
+    max-width: 100rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 40%;
+    }
   }
 `;
 

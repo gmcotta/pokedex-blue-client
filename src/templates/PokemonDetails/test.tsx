@@ -10,9 +10,11 @@ import { firstPokemonMock, lastPokemonMock } from './mocks';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const useRouter = jest.spyOn(require('next/router'), 'useRouter');
 const push = jest.fn();
+const back = jest.fn();
 const prefetch = jest.fn(() => Promise.resolve(true));
 useRouter.mockImplementation(() => ({
   push,
+  back,
   prefetch,
   query: '',
   asPath: '',
@@ -171,6 +173,20 @@ describe('<PokemonDetailsTemplate />', () => {
     });
     await waitFor(() => {
       expect(push).toHaveBeenCalled();
+    });
+  });
+
+  it('should call back when back button is pressed', async () => {
+    renderWithTheme(<PokemonDetailsTemplate details={lastPokemonMock} />);
+    act(() => {
+      userEvent.click(
+        screen.getByRole('button', {
+          name: /back/i,
+        })
+      );
+    });
+    await waitFor(() => {
+      expect(back).toHaveBeenCalled();
     });
   });
 });
