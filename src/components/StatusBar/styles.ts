@@ -7,8 +7,16 @@ export const Wrapper = styled.div`
     flex-direction: column;
     width: 100%;
 
+    & + div {
+      margin-top: 0.8rem;
+    }
+
     p {
       font-size: 2.4rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.8rem;
+      }
     }
 
     div {

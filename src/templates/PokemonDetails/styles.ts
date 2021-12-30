@@ -59,6 +59,10 @@ export const PokemonName = styled.h1`
     border-radius: 3.2rem;
     padding: 0.8rem;
     line-height: 4.8rem;
+
+    @media (max-width: 768px) {
+      font-size: 2.8rem;
+    }
   `}
 `;
 
@@ -68,8 +72,12 @@ export const InfoGrid = styled.div`
   padding-top: 2.4rem;
   grid-gap: 2.4rem;
   width: 100%;
-  height: 100%;
+
   max-width: 100rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: none;
+  }
 `;
 
 export const ImageCard = styled.div`
@@ -80,6 +88,14 @@ export const ImageCard = styled.div`
     border: 1.6rem solid orange;
     border-radius: 1.6rem;
     align-self: start;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 768px) {
+      max-height: 40rem;
+    }
   `}
 `;
 
@@ -97,6 +113,10 @@ export const InfoCard = styled.div`
       text-align: center;
       font-size: 3.2rem;
       font-weight: 400;
+
+      @media (max-width: 768px) {
+        font-size: 2.4rem;
+      }
     }
 
     > div {
@@ -111,6 +131,9 @@ export const InfoCard = styled.div`
 
         p {
           font-size: 2.8rem;
+          @media (max-width: 768px) {
+            font-size: 2rem;
+          }
         }
       }
     }
@@ -122,6 +145,10 @@ export const InfoCard = styled.div`
       border-radius: 0.8rem;
       margin-top: 2.4rem;
       flex: 1;
+
+      @media (max-width: 768px) {
+        font-size: 1.6rem;
+      }
     }
   `}
 `;
@@ -161,5 +188,11 @@ export const EvolutionGrid = styled.div<EvolutionGridProps>`
       inset 0px 4px 4px rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(1rem);
     border-radius: 3.2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: none;
+      grid-template-rows: repeat(${numberOfStages}, 1fr);
+      max-height: 100rem;
+    }
   `}
 `;

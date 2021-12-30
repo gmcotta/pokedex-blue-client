@@ -6,6 +6,10 @@ export const StageContainer = styled.div`
       color: ${theme.colors.black};
       font-weight: 300;
       font-size: 2.8rem;
+
+      @media (max-width: 768px) {
+        font-size: 2.4rem;
+      }
     }
   `}
   width: 100%;
