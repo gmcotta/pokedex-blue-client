@@ -6,7 +6,6 @@ import StatusBar from '.';
 describe('<StatusBar />', () => {
   it('should render the component', () => {
     renderWithTheme(<StatusBar value="45" name="HP" status="hp" />);
-    screen.logTestingPlaygroundURL();
     expect(screen.getByText(/hp - 45/i)).toBeInTheDocument;
     expect(screen.getByLabelText(/hp/i)).toHaveStyle({
       'background-color': '#FF0000',

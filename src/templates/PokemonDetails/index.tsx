@@ -64,7 +64,7 @@ const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
     <S.Wrapper>
       <S.Header>
         <div>
-          <button onClick={() => back()}>
+          <button aria-label="go back" onClick={() => back()}>
             <BackIcon color="black" size="small" />
           </button>
           <div>
@@ -90,7 +90,7 @@ const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
               Evolution
             </S.TabTitle>
           </div>
-          <button>
+          <button aria-label="settings">
             <SettingsIcon color="black" size="small" />
           </button>
         </div>

@@ -29,7 +29,6 @@ describe('<PokemonListTemplate />', () => {
     expect(screen.getByRole('button', { name: /filter/i })).toBeInTheDocument;
     expect(screen.getByRole('button', { name: /settings/i })).toBeInTheDocument;
     expect(screen.getByLabelText(/pokemon name/i)).toBeInTheDocument;
-    expect(screen.getByLabelText(/pokemon name/i)).toHaveAttribute('readOnly');
     expect(screen.getByText(/loading.../i)).toBeInTheDocument();
   });
 
@@ -59,13 +58,13 @@ describe('<PokemonListTemplate />', () => {
     );
     expect(
       await screen.findByRole('textbox', { name: /pokemon name/i })
-    ).toHaveAttribute('value', '#001 - Bulbasaur');
+    ).toHaveTextContent('#001 - Bulbasaur');
     userEvent.unhover(
       await screen.findByRole('img', { name: /#001 - bulbasaur/i })
     );
     expect(
       await screen.findByRole('textbox', { name: /pokemon name/i })
-    ).toHaveAttribute('value', '');
+    ).toHaveTextContent('');
   });
 
   it('should call push when pokemon image is clicked', async () => {
@@ -97,20 +96,20 @@ describe('<PokemonListTemplate />', () => {
       await screen.findByRole('img', { name: /#001 - bulbasaur/i })
     ).toBeInTheDocument();
 
-    userEvent.click(await screen.findByRole('button', { name: /next page/i }));
+    userEvent.click(await screen.findByRole('button', { name: /next/i }));
     expect(
       await screen.findByRole('img', { name: /#025 - pikachu/i })
     ).toBeInTheDocument();
-    expect(
-      await screen.findByRole('textbox', { name: /actual page/i })
-    ).toHaveAttribute('value', '2');
+    expect(await screen.getByLabelText(/actual page/i)).toHaveTextContent(
+      'Page 2 of 38'
+    );
 
-    userEvent.click(screen.getByRole('button', { name: /previous page/i }));
+    userEvent.click(screen.getByRole('button', { name: /prev/i }));
     expect(
       screen.getByRole('img', { name: /#001 - bulbasaur/i })
     ).toBeInTheDocument();
-    expect(
-      screen.getByRole('textbox', { name: /actual page/i })
-    ).toHaveAttribute('value', '1');
+    expect(screen.getByLabelText(/actual page/i)).toHaveTextContent(
+      'Page 1 of 38'
+    );
   });
 });

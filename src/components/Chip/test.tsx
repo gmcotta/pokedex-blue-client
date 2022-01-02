@@ -8,12 +8,10 @@ describe('<Chip />', () => {
     renderWithTheme(<Chip name="bug" />);
   });
   screen.debug();
-  screen.logTestingPlaygroundURL();
 });
 
 describe('<Chip />', () => {
   it('should render component without image', () => {
     renderWithTheme(<Chip name="bug" hasImage />);
   });
-  screen.logTestingPlaygroundURL();
 });

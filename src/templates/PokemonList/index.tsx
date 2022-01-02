@@ -52,11 +52,13 @@ const PokemonListTemplate = () => {
     <S.Wrapper>
       <S.Header>
         <div>
-          <button type="button">
+          <button aria-label="filter" type="button">
             <FilterIcon size="small" />
           </button>
-          <span aria-label="pokemon name">{pokemonName}</span>
-          <button type="button">
+          <span role="textbox" aria-label="pokemon name">
+            {pokemonName}
+          </span>
+          <button aria-label="settings" type="button">
             <SettingsIcon size="small" />
           </button>
         </div>

@@ -45,6 +45,11 @@ describe('<PokemonDetailsTemplate />', () => {
     renderWithTheme(<PokemonDetailsTemplate details={firstPokemonMock} />);
     expect(
       screen.getByRole('button', {
+        name: /go back/i,
+      })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', {
         name: /info/i,
       })
     ).toBeInTheDocument();
@@ -56,6 +61,11 @@ describe('<PokemonDetailsTemplate />', () => {
     expect(
       screen.getByRole('button', {
         name: /evolution/i,
+      })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', {
+        name: /settings/i,
       })
     ).toBeInTheDocument();
     expect(
@@ -181,7 +191,7 @@ describe('<PokemonDetailsTemplate />', () => {
     act(() => {
       userEvent.click(
         screen.getByRole('button', {
-          name: /back/i,
+          name: /go back/i,
         })
       );
     });

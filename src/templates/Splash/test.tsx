@@ -29,7 +29,7 @@ describe('<Splash />', () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole('button', {
-        name: /iniciar/i,
+        name: /start/i,
       })
     ).toBeInTheDocument();
     expect(container.firstChild).toMatchSnapshot();
@@ -40,7 +40,7 @@ describe('<Splash />', () => {
     act(() => {
       userEvent.click(
         screen.getByRole('button', {
-          name: /iniciar/i,
+          name: /start/i,
         })
       );
     });

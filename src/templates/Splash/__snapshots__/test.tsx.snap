@@ -257,32 +257,53 @@ exports[`<Splash /> should render the component 1`] = `
 }
 
 .c3 {
+  font-weight: 400;
+  font-family: 'Odibee Sans',sans-serif;
+  -webkit-letter-spacing: 1rem;
+  -moz-letter-spacing: 1rem;
+  -ms-letter-spacing: 1rem;
+  letter-spacing: 1rem;
   font-size: 4.8rem;
-  color: #c4dced;
+  color: #EDEAEA;
 }
 
 .c4 {
-  background: linear-gradient(180deg,#83b8e9 25%,#2390f4 100%);
-  font-size: 1.6rem;
-  color: #EDEAEA;
-  height: 4.8rem;
-  padding: 0.8rem 1.6rem;
-  border-radius: 0.8rem;
-  margin-top: 2.4rem;
-  border: 0;
-  border-bottom: 4px solid #2d41f0;
+  padding: 1.6rem 3.2rem;
+  border: none;
+  height: 5.6rem;
+  border-radius: 2.8rem;
+  background-color: #F8F8F8;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Odibee Sans',sans-serif;
+  font-size: 4rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-letter-spacing: 0.4rem;
+  -moz-letter-spacing: 0.4rem;
+  -ms-letter-spacing: 0.4rem;
+  letter-spacing: 0.4rem;
 }
 
-.c4:hover {
-  -webkit-filter: brightness(0.8);
-  filter: brightness(0.8);
+.c4:not([disabled]):hover {
   cursor: pointer;
-  -webkit-transition: filter 200ms ease-in;
-  transition: filter 200ms ease-in;
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.25),inset 0px 4px 4px rgba(255,255,255,0.25);
+  -webkit-transform: translateY(-0.2rem);
+  -ms-transform: translateY(-0.2rem);
+  transform: translateY(-0.2rem);
 }
 
-.c4:active {
-  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+.c4:disabled {
+  cursor: not-allowed;
+  background-color: #dfdfdf;
 }
 
 @media (max-width:768px) {
@@ -294,6 +315,14 @@ exports[`<Splash /> should render the component 1`] = `
 @media (max-width:375px) {
   .c3 {
     font-size: 2.4rem;
+  }
+}
+
+@media (max-width:768px) {
+  .c4 {
+    height: 4.8rem;
+    border-radius: 2.4rem;
+    font-size: 3.2rem;
   }
 }
 
@@ -316,7 +345,7 @@ exports[`<Splash /> should render the component 1`] = `
     <button
       class="c4"
     >
-      Iniciar
+      Start
     </button>
   </div>
   <section
