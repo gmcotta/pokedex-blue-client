@@ -11,11 +11,13 @@ import * as S from './styles';
 import { FilterIcon, SettingsIcon } from '@/components/Icons';
 import PokemonSearchNameInput from '@/components/PokemonSearchNameInput';
 import Checkbox from '@/components/Checkbox';
+import { formatQueryObjectToGraphQLParams } from '@/utils/formatQueryObjectToGraphQLParams';
 
 const PokemonListTemplate = () => {
-  const { push } = useRouter();
+  const { push, query } = useRouter();
   const [pokemonName, setPokemonName] = useState('');
   const [selectedPokemon, setSelectedPokemon] = useState('');
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
   const [pokemonTotal, setPokemonTotal] = useState(0);
@@ -24,8 +26,20 @@ const PokemonListTemplate = () => {
     variables: {
       page,
       pageSize: 24,
+      filters: formatQueryObjectToGraphQLParams(query),
     },
   });
+
+  useEffect(() => {
+    console.log(query);
+    const selectedCheckboxes = getSelectedCheckboxes();
+    for (const checkbox of selectedCheckboxes) {
+      checkbox.checked = false;
+    }
+    setIsFilterModalOpen(false);
+    setSelectedTypes([]);
+    setPage(1);
+  }, [push, query]);
 
   useEffect(() => {
     if (data) {
@@ -51,6 +65,11 @@ const PokemonListTemplate = () => {
   const handleGridItemClick = (id: number) => {
     push(`/pokemon/${id}`);
   };
+  const handleSearchInputChange = (
+    event: SyntheticEvent<HTMLInputElement, Event>
+  ) => {
+    setSelectedPokemon((event.target as HTMLInputElement).value);
+  };
   const handleSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (selectedPokemon) {
@@ -61,11 +80,35 @@ const PokemonListTemplate = () => {
       push(`/pokemon/${pokemonId}`);
     }
   };
-
-  const handleSearchInputChange = (
+  const getSelectedCheckboxes = () => {
+    const allCheckboxes = document.querySelectorAll(
+      'input[name="pokemon-type"]'
+    );
+    const allCheckboxesArray = Array.from(allCheckboxes) as HTMLInputElement[];
+    const selectedCheckboxes = allCheckboxesArray.filter(
+      (checkbox) => checkbox.checked
+    );
+    return selectedCheckboxes;
+  };
+  const handleTypeSelected = (
     event: SyntheticEvent<HTMLInputElement, Event>
   ) => {
-    setSelectedPokemon((event.target as HTMLInputElement).value);
+    const limit = 2;
+    let selectedCheckboxes = getSelectedCheckboxes();
+    if (selectedCheckboxes.length > limit) {
+      (event.target as HTMLInputElement).checked = false;
+    }
+    selectedCheckboxes = getSelectedCheckboxes();
+    const selectedTypes = selectedCheckboxes.map((checkbox) => checkbox.id);
+    setSelectedTypes(selectedTypes);
+  };
+  const handleFilter = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    let queryString = '';
+    if (selectedTypes.length) {
+      queryString += `?types=${selectedTypes}`;
+    }
+    push(queryString);
   };
 
   return (
@@ -107,21 +150,22 @@ const PokemonListTemplate = () => {
                   />
                   <button type="submit">Search</button>
                 </S.SearchSection>
-                <S.FilterSection>
+                <S.FilterSection onSubmit={(event) => handleFilter(event)}>
                   <h3>Filter</h3>
                   <div>
                     <h4>Type</h4>
                     <span>Select up to 2 types</span>
-                    <div>
+                    <S.CheckboxGrid>
                       {PokemonTypesArray.map((type) => (
                         <Checkbox
                           key={type}
                           id={type}
                           name="pokemon-type"
                           label={type.charAt(0).toUpperCase() + type.slice(1)}
+                          onChange={(event) => handleTypeSelected(event)}
                         />
                       ))}
-                    </div>
+                    </S.CheckboxGrid>
                   </div>
                   <button>Filter</button>
                 </S.FilterSection>

@@ -255,3 +255,8 @@ export const FilterSection = styled.form`
     margin-top: auto;
   }
 `;
+
+export const CheckboxGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`;
