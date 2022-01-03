@@ -1,5 +1,5 @@
 import { GetAllPokemonNames_pokemons_data_attributes } from '@/graphql/generated/GetAllPokemonNames';
-import { useAllPokemonNames } from '@/hooks/useAllNamesQuery';
+import { useAllPokemonNames } from '@/hooks/useAllPokemonNamesQuery';
 import { HTMLProps, useEffect, useState } from 'react';
 
 type PokemonSearchNameInputProps = HTMLProps<HTMLInputElement>;
