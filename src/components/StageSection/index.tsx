@@ -26,6 +26,7 @@ const StageSection = ({ title, stageInfo }: StageSectionProps) => {
             name={pokemon.name!}
             pokemonId={pokemon.pokemonId!}
             pokemonTypes={pokemon.pokemonTypes!}
+            showPokemonName
             onClick={() => handleGridItemClick(pokemon.pokemonId!)}
           />
         ))}

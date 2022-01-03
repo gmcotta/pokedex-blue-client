@@ -5,13 +5,20 @@ import formatPokemonName from '../../utils/formatPokemonName';
 import { PokemonGridItemProps as ModelProps } from 'models';
 import * as S from './styles';
 
-type PokemonGridItemProps = ModelProps & LiHTMLAttributes<HTMLLIElement>;
+type OptionalProps = {
+  showPokemonName?: boolean;
+};
+
+type PokemonGridItemProps = ModelProps &
+  OptionalProps &
+  LiHTMLAttributes<HTMLLIElement>;
 
 const PokemonGridItem = ({
   pokemonId,
   name,
   imgSrc,
   pokemonTypes,
+  showPokemonName = false,
   onClick,
   ...props
 }: PokemonGridItemProps) => {
@@ -23,6 +30,7 @@ const PokemonGridItem = ({
       {...props}
     >
       <img src={imgSrc} alt={formatPokemonName(pokemonId, name)} />
+      {showPokemonName && <span>{formatPokemonName(pokemonId, name)}</span>}
     </S.Wrapper>
   );
 };

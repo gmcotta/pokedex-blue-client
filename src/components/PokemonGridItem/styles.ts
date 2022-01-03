@@ -29,24 +29,31 @@ export const Wrapper = styled.li<WrapperProps>`
     return css`
       height: 100%;
       aspect-ratio: 1;
-      border-radius: 6.4rem;
+      border-radius: 4rem;
       justify-self: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
-      &:hover,
-      &:focus {
-        background: ${backgroundStyle};
-        border: 4px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
-          inset 0px 4px 4px rgba(255, 255, 255, 0.25);
-
-        z-index: 5;
-        cursor: pointer;
+      > span {
+        font-size: 1.2rem;
       }
 
       & img {
         height: 100%;
         z-index: 10;
-        border-radius: 6.4rem;
+        border-radius: 4rem;
+
+        &:hover,
+        &:focus {
+          background: ${backgroundStyle};
+          border: 4px solid rgba(255, 255, 255, 0.3);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+            inset 0px 4px 4px rgba(255, 255, 255, 0.25);
+
+          z-index: 5;
+          cursor: pointer;
+        }
       }
     `;
   }}
