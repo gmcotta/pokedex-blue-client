@@ -10,6 +10,7 @@ import formatPokemonName from '@/utils/formatPokemonName';
 import * as S from './styles';
 import { FilterIcon, SettingsIcon } from '@/components/Icons';
 import PokemonSearchNameInput from '@/components/PokemonSearchNameInput';
+import Checkbox from '@/components/Checkbox';
 
 const PokemonListTemplate = () => {
   const { push } = useRouter();
@@ -110,12 +111,15 @@ const PokemonListTemplate = () => {
                   <h3>Filter</h3>
                   <div>
                     <h4>Type</h4>
+                    <span>Select up to 2 types</span>
                     <div>
                       {PokemonTypesArray.map((type) => (
-                        <label key={type} htmlFor={type}>
-                          <input type="checkbox" id={type} name={type} />
-                          {type.charAt(0).toUpperCase() + type.slice(1)}
-                        </label>
+                        <Checkbox
+                          key={type}
+                          id={type}
+                          name="pokemon-type"
+                          label={type.charAt(0).toUpperCase() + type.slice(1)}
+                        />
                       ))}
                     </div>
                   </div>
