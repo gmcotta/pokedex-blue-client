@@ -43,6 +43,11 @@ export const Header = styled(HeaderComponent)`
         align-items: center;
         justify-content: center;
         font-size: 2rem;
+
+        @media (max-width: ${theme.breakpoints.md}) {
+          font-size: 1.6rem;
+          width: 16rem;
+        }
       }
 
       div {
