@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FormEvent, SyntheticEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import PokemonGridItem from '@/components/PokemonGridItem';
@@ -9,10 +9,12 @@ import formatPokemonName from '@/utils/formatPokemonName';
 
 import * as S from './styles';
 import { FilterIcon, SettingsIcon } from '@/components/Icons';
+import PokemonSearchNameInput from '@/components/PokemonSearchNameInput';
 
 const PokemonListTemplate = () => {
   const { push } = useRouter();
   const [pokemonName, setPokemonName] = useState('');
+  const [selectedPokemon, setSelectedPokemon] = useState('');
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
   const [pokemonTotal, setPokemonTotal] = useState(0);
@@ -48,6 +50,22 @@ const PokemonListTemplate = () => {
   const handleGridItemClick = (id: number) => {
     push(`/pokemon/${id}`);
   };
+  const handleSearch = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (selectedPokemon) {
+      const selectedOption = document.querySelector(
+        `option[value=${selectedPokemon}]`
+      );
+      const pokemonId = selectedOption?.getAttribute('data-pokemon-id');
+      push(`/pokemon/${pokemonId}`);
+    }
+  };
+
+  const handleSearchInputChange = (
+    event: SyntheticEvent<HTMLInputElement, Event>
+  ) => {
+    setSelectedPokemon((event.target as HTMLInputElement).value);
+  };
 
   return (
     <S.Wrapper>
@@ -81,9 +99,12 @@ const PokemonListTemplate = () => {
                 </button>
               </S.ModalHeader>
               <S.ModalContent>
-                <S.SearchSection>
+                <S.SearchSection onSubmit={(event) => handleSearch(event)}>
                   <h3>Search</h3>
-                  <input />
+                  <PokemonSearchNameInput
+                    onSelect={(event) => handleSearchInputChange(event)}
+                  />
+                  <button type="submit">Search</button>
                 </S.SearchSection>
                 <S.FilterSection>
                   <h3>Filter</h3>

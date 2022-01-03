@@ -232,6 +232,7 @@ export const ModalContainer = styled.div`
   background-color: white;
   border-radius: 0.8rem;
   padding: 1.6rem;
+  margin: 1.6rem;
   display: flex;
   flex-direction: column;
   z-index: 200;
@@ -246,9 +247,9 @@ export const ModalContent = styled.div`
   height: 100%;
 `;
 
-export const SearchSection = styled.div``;
+export const SearchSection = styled.form``;
 
-export const FilterSection = styled.div`
+export const FilterSection = styled.form`
   height: 100%;
   > button {
     margin-top: auto;
