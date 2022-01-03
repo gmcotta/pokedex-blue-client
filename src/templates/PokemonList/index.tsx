@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import PokemonGridItem from '@/components/PokemonGridItem';
 import Pagination from '@/components/Pagination';
 import { usePokemonListQuery } from '@/hooks/usePokemonListQuery';
-import { PokemonTypes } from '@/models';
+import { PokemonTypes, PokemonTypesArray } from '@/models';
 import formatPokemonName from '@/utils/formatPokemonName';
 
 import * as S from './styles';
@@ -16,6 +16,7 @@ const PokemonListTemplate = () => {
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
   const [pokemonTotal, setPokemonTotal] = useState(0);
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const { data, loading, fetchMore } = usePokemonListQuery({
     variables: {
       page,
@@ -52,7 +53,11 @@ const PokemonListTemplate = () => {
     <S.Wrapper>
       <S.Header>
         <div>
-          <button aria-label="filter" type="button">
+          <button
+            aria-label="filter"
+            type="button"
+            onClick={() => setIsFilterModalOpen(true)}
+          >
             <FilterIcon size="small" />
           </button>
           <span role="textbox" aria-label="pokemon name">
@@ -64,6 +69,41 @@ const PokemonListTemplate = () => {
         </div>
       </S.Header>
       <S.Container>
+        {
+          <S.FilterModal
+            onClose={() => setIsFilterModalOpen(false)}
+            isOpen={isFilterModalOpen}
+          >
+            <S.ModalContainer data-modal-safe-area="true">
+              <S.ModalHeader>
+                <button onClick={() => setIsFilterModalOpen(false)}>
+                  Close
+                </button>
+              </S.ModalHeader>
+              <S.ModalContent>
+                <S.SearchSection>
+                  <h3>Search</h3>
+                  <input />
+                </S.SearchSection>
+                <S.FilterSection>
+                  <h3>Filter</h3>
+                  <div>
+                    <h4>Type</h4>
+                    <div>
+                      {PokemonTypesArray.map((type) => (
+                        <label key={type} htmlFor={type}>
+                          <input type="checkbox" id={type} name={type} />
+                          {type.charAt(0).toUpperCase() + type.slice(1)}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <button>Filter</button>
+                </S.FilterSection>
+              </S.ModalContent>
+            </S.ModalContainer>
+          </S.FilterModal>
+        }
         <S.ListContainer>
           <S.ListHeader>
             <Pagination

@@ -1,6 +1,7 @@
 import styled, { css, keyframes } from 'styled-components';
 
 import HeaderComponent from '@/components/Header';
+import Modal from '@/components/Modal';
 
 export const Wrapper = styled.main`
   display: flex;
@@ -217,4 +218,39 @@ export const Loading = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
+`;
+
+export const FilterModal = styled(Modal)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ModalContainer = styled.div`
+  width: 30rem;
+  height: 40rem;
+  background-color: white;
+  border-radius: 0.8rem;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+`;
+
+export const ModalHeader = styled.header`
+  display: flex;
+  justify-content: end;
+`;
+
+export const ModalContent = styled.div`
+  height: 100%;
+`;
+
+export const SearchSection = styled.div``;
+
+export const FilterSection = styled.div`
+  height: 100%;
+  > button {
+    margin-top: auto;
+  }
 `;
