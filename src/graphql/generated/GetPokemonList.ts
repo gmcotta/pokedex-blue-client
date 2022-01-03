@@ -3,6 +3,8 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { PokemonFiltersInput } from "./globalTypes";
+
 // ====================================================
 // GraphQL query operation: GetPokemonList
 // ====================================================
@@ -77,4 +79,5 @@ export interface GetPokemonList {
 export interface GetPokemonListVariables {
   page: number;
   pageSize: number;
+  filters?: PokemonFiltersInput | null;
 }
