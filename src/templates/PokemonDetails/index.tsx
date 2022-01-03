@@ -30,7 +30,7 @@ const FIRST_POKEMON_NUMBER = 1;
 const LAST_POKEMON_NUMBER = 898;
 
 const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
-  const { push, asPath, back } = useRouter();
+  const { push, asPath } = useRouter();
 
   const [activeTab, setActiveTab] = useState<TabOptions>('info');
   const [currentPokemon, setCurrentPokemon] = useState(0);
@@ -64,7 +64,7 @@ const PokemonDetailsTemplate = ({ details }: PokemonDetailsTemplateProps) => {
     <S.Wrapper>
       <S.Header>
         <div>
-          <button aria-label="go back" onClick={() => back()}>
+          <button aria-label="go back" onClick={() => push('/pokemon-list')}>
             <BackIcon color="black" size="small" />
           </button>
           <div>

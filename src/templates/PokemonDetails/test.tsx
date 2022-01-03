@@ -186,7 +186,7 @@ describe('<PokemonDetailsTemplate />', () => {
     });
   });
 
-  it('should call back when back button is pressed', async () => {
+  it('should call push when back button is pressed', async () => {
     renderWithTheme(<PokemonDetailsTemplate details={lastPokemonMock} />);
     act(() => {
       userEvent.click(
@@ -196,7 +196,7 @@ describe('<PokemonDetailsTemplate />', () => {
       );
     });
     await waitFor(() => {
-      expect(back).toHaveBeenCalled();
+      expect(push).toHaveBeenCalledWith('/pokemon-list');
     });
   });
 });
