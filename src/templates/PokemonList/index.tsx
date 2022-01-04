@@ -31,7 +31,6 @@ const PokemonListTemplate = () => {
   });
 
   useEffect(() => {
-    console.log(query);
     const selectedCheckboxes = getSelectedCheckboxes();
     for (const checkbox of selectedCheckboxes) {
       checkbox.checked = false;
@@ -116,7 +115,7 @@ const PokemonListTemplate = () => {
       <S.Header>
         <div>
           <button
-            aria-label="filter"
+            aria-label="filter modal button"
             type="button"
             onClick={() => setIsFilterModalOpen(true)}
           >
@@ -125,7 +124,7 @@ const PokemonListTemplate = () => {
           <span role="textbox" aria-label="pokemon name">
             {pokemonName}
           </span>
-          <button aria-label="settings" type="button">
+          <button aria-label="settings modal button" type="button">
             <SettingsIcon size="small" />
           </button>
         </div>

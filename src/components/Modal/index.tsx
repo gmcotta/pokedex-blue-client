@@ -1,9 +1,9 @@
-import { ReactNode, MouseEvent } from 'react';
+import { ReactNode, MouseEvent, HTMLProps } from 'react';
 
 import LockScroll from '../LockScroll';
 import * as S from './styles';
 
-type ModalProps = {
+type ModalProps = HTMLProps<HTMLDivElement> & {
   isOpen: boolean;
   children: ReactNode;
   className?: string;

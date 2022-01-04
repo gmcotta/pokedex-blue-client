@@ -23,6 +23,7 @@ const PokemonSearchNameInput = (props: PokemonSearchNameInputProps) => {
         type="search"
         name="pokemon-name"
         list="pokemon-names"
+        aria-label="search input"
         onChange={props.onChange}
         onSelect={props.onSelect}
       />
