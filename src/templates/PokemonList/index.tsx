@@ -9,14 +9,13 @@ import formatPokemonName from '@/utils/formatPokemonName';
 
 import * as S from './styles';
 import { FilterIcon, SettingsIcon } from '@/components/Icons';
-import PokemonSearchNameInput from '@/components/PokemonSearchNameInput';
 import Checkbox from '@/components/Checkbox';
 import { formatQueryObjectToGraphQLParams } from '@/utils/formatQueryObjectToGraphQLParams';
+import SearchForm from '@/components/forms/SearchForm';
 
 const PokemonListTemplate = () => {
   const { push, query } = useRouter();
   const [pokemonName, setPokemonName] = useState('');
-  const [selectedPokemon, setSelectedPokemon] = useState('');
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
@@ -63,21 +62,6 @@ const PokemonListTemplate = () => {
   };
   const handleGridItemClick = (id: number) => {
     push(`/pokemon/${id}`);
-  };
-  const handleSearchInputChange = (
-    event: SyntheticEvent<HTMLInputElement, Event>
-  ) => {
-    setSelectedPokemon((event.target as HTMLInputElement).value);
-  };
-  const handleSearch = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (selectedPokemon) {
-      const selectedOption = document.querySelector(
-        `option[value=${selectedPokemon}]`
-      );
-      const pokemonId = selectedOption?.getAttribute('data-pokemon-id');
-      push(`/pokemon/${pokemonId}`);
-    }
   };
   const getSelectedCheckboxes = () => {
     const allCheckboxes = document.querySelectorAll(
@@ -142,13 +126,7 @@ const PokemonListTemplate = () => {
                 </button>
               </S.ModalHeader>
               <S.ModalContent>
-                <S.SearchSection onSubmit={(event) => handleSearch(event)}>
-                  <h3>Search</h3>
-                  <PokemonSearchNameInput
-                    onSelect={(event) => handleSearchInputChange(event)}
-                  />
-                  <button type="submit">Search</button>
-                </S.SearchSection>
+                <SearchForm />
                 <S.FilterSection onSubmit={(event) => handleFilter(event)}>
                   <h3>Filter</h3>
                   <div>

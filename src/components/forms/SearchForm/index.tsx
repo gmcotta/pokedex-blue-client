@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 const SearchForm = () => {
   const { push } = useRouter();
-  const [selectedPokemon, setSelectedPokemon] = useState('');
+  const [selectedPokemon, setSelectedPokemon] = useState('a');
   const [hasError, setHasError] = useState(false);
 
   const handleSearchInputChange = (

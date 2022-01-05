@@ -24,7 +24,6 @@ describe('<SearchForm />', () => {
         <SearchForm />
       </MockedProvider>
     );
-    screen.logTestingPlaygroundURL();
     expect(
       screen.getByRole('heading', {
         name: /search/i,
@@ -64,6 +63,23 @@ describe('<SearchForm />', () => {
     ).toBeInTheDocument();
   });
 
+  it('should show an error message if user searches with no pokémon', () => {
+    renderWithTheme(
+      <MockedProvider mocks={[AllPokemonNamesMock]} addTypename={false}>
+        <SearchForm />
+      </MockedProvider>
+    );
+    userEvent.click(
+      screen.getByRole('button', {
+        name: /search/i,
+      })
+    );
+    expect(
+      screen.getByText(/please, select a valid pokémon/i)
+    ).toBeInTheDocument();
+  });
+
+  // TODO: verificar teste
   it('should call push to the selected pokémon page', () => {
     renderWithTheme(
       <MockedProvider mocks={[AllPokemonNamesMock]} addTypename={false}>
@@ -76,12 +92,12 @@ describe('<SearchForm />', () => {
       }),
       'Bulbasaur'
     );
+    userEvent.click(
+      screen.getByRole('button', {
+        name: /search/i,
+      })
+    );
     waitFor(() => {
-      userEvent.click(
-        screen.getByRole('button', {
-          name: /search/i,
-        })
-      );
       expect(push).toHaveBeenCalledWith('/pokemon/1');
     });
   });
