@@ -1,10 +1,10 @@
 import { QueryHookOptions, useQuery } from '@apollo/client';
 
-import { GetAllPokemonNames } from '@/graphql/generated/GetAllPokemonNames';
-import { GET_ALL_POKEMON_NAMES } from '@/graphql/queries/allPokemonNames';
+import { GetAllPokemonTypes } from '@/graphql/generated/GetAllPokemonTypes';
+import { GET_ALL_POKEMON_TYPES } from '@/graphql/queries/allPokemonTypes';
 
-export function useAllPokemonNames(
-  options: QueryHookOptions<GetAllPokemonNames>
+export function useAllPokemonTypes(
+  options: QueryHookOptions<GetAllPokemonTypes>
 ) {
-  return useQuery<GetAllPokemonNames>(GET_ALL_POKEMON_NAMES, options);
+  return useQuery<GetAllPokemonTypes>(GET_ALL_POKEMON_TYPES, options);
 }
