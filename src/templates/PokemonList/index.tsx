@@ -1,22 +1,21 @@
-import { FormEvent, SyntheticEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import PokemonGridItem from '@/components/PokemonGridItem';
 import Pagination from '@/components/Pagination';
 import { usePokemonListQuery } from '@/hooks/usePokemonListQuery';
-import { PokemonTypes, PokemonTypesArray } from '@/models';
+import { PokemonTypes } from '@/models';
 import formatPokemonName from '@/utils/formatPokemonName';
 
 import * as S from './styles';
 import { FilterIcon, SettingsIcon } from '@/components/Icons';
-import Checkbox from '@/components/Checkbox';
 import { formatQueryObjectToGraphQLParams } from '@/utils/formatQueryObjectToGraphQLParams';
 import SearchForm from '@/components/forms/SearchForm';
+import FilterForm from '@/components/forms/FilterForm';
 
 const PokemonListTemplate = () => {
   const { push, query } = useRouter();
   const [pokemonName, setPokemonName] = useState('');
-  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
   const [pokemonTotal, setPokemonTotal] = useState(0);
@@ -30,12 +29,7 @@ const PokemonListTemplate = () => {
   });
 
   useEffect(() => {
-    const selectedCheckboxes = getSelectedCheckboxes();
-    for (const checkbox of selectedCheckboxes) {
-      checkbox.checked = false;
-    }
     setIsFilterModalOpen(false);
-    setSelectedTypes([]);
     setPage(1);
   }, [push, query]);
 
@@ -62,36 +56,6 @@ const PokemonListTemplate = () => {
   };
   const handleGridItemClick = (id: number) => {
     push(`/pokemon/${id}`);
-  };
-  const getSelectedCheckboxes = () => {
-    const allCheckboxes = document.querySelectorAll(
-      'input[name="pokemon-type"]'
-    );
-    const allCheckboxesArray = Array.from(allCheckboxes) as HTMLInputElement[];
-    const selectedCheckboxes = allCheckboxesArray.filter(
-      (checkbox) => checkbox.checked
-    );
-    return selectedCheckboxes;
-  };
-  const handleTypeSelected = (
-    event: SyntheticEvent<HTMLInputElement, Event>
-  ) => {
-    const limit = 2;
-    let selectedCheckboxes = getSelectedCheckboxes();
-    if (selectedCheckboxes.length > limit) {
-      (event.target as HTMLInputElement).checked = false;
-    }
-    selectedCheckboxes = getSelectedCheckboxes();
-    const selectedTypes = selectedCheckboxes.map((checkbox) => checkbox.id);
-    setSelectedTypes(selectedTypes);
-  };
-  const handleFilter = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    let queryString = '';
-    if (selectedTypes.length) {
-      queryString += `?types=${selectedTypes}`;
-    }
-    push(queryString);
   };
 
   return (
@@ -127,25 +91,7 @@ const PokemonListTemplate = () => {
               </S.ModalHeader>
               <S.ModalContent>
                 <SearchForm />
-                <S.FilterSection onSubmit={(event) => handleFilter(event)}>
-                  <h3>Filter</h3>
-                  <div>
-                    <h4>Type</h4>
-                    <span>Select up to 2 types</span>
-                    <S.CheckboxGrid>
-                      {PokemonTypesArray.map((type) => (
-                        <Checkbox
-                          key={type}
-                          id={type}
-                          name="pokemon-type"
-                          label={type.charAt(0).toUpperCase() + type.slice(1)}
-                          onChange={(event) => handleTypeSelected(event)}
-                        />
-                      ))}
-                    </S.CheckboxGrid>
-                  </div>
-                  <button>Filter</button>
-                </S.FilterSection>
+                <FilterForm />
               </S.ModalContent>
             </S.ModalContainer>
           </S.FilterModal>

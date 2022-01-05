@@ -5,12 +5,7 @@ import { MockedProvider } from '@apollo/client/testing';
 import { renderWithTheme } from '@/utils/testUtils';
 
 import PokemonListTemplate from '.';
-import {
-  AllPokemonNames,
-  PokemonListMockPageOne,
-  PokemonListMockPageOneBugDragon,
-  PokemonListMockPageTwo,
-} from './mocks';
+import { PokemonListMockPageOne, PokemonListMockPageTwo } from './mocks';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const useRouter = jest.spyOn(require('next/router'), 'useRouter');
@@ -140,51 +135,5 @@ describe('<PokemonListTemplate />', () => {
       screen.getByRole('heading', { name: /filter/i })
     ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /type/i })).toBeInTheDocument();
-  });
-
-  it('should search a pokémon and call push to its page', async () => {
-    renderWithTheme(
-      <MockedProvider
-        mocks={[PokemonListMockPageOne, AllPokemonNames]}
-        addTypename={false}
-      >
-        <PokemonListTemplate />
-      </MockedProvider>
-    );
-    userEvent.click(
-      screen.getByRole('button', { name: /filter modal button/i })
-    );
-    userEvent.type(
-      screen.getByRole('combobox', {
-        name: /search input/i,
-      }),
-      'Bulbasaur'
-    );
-    expect(
-      screen.getByRole('combobox', {
-        name: /search input/i,
-      })
-    ).toHaveValue('Bulbasaur');
-    // await waitFor(() => {
-    //   // userEvent.click(screen.getByRole('button', { name: /search/i }));
-    //   // expect(push).toHaveBeenCalledWith('/pokemon/1');
-    // });
-  });
-
-  it('should filter pokémon with bug or dragon types', async () => {
-    renderWithTheme(
-      <MockedProvider
-        mocks={[PokemonListMockPageOne, PokemonListMockPageOneBugDragon]}
-        addTypename={false}
-      >
-        <PokemonListTemplate />
-      </MockedProvider>
-    );
-    userEvent.click(
-      screen.getByRole('button', { name: /filter modal button/i })
-    );
-    userEvent.click(screen.getByRole('checkbox', { name: /bug/i }));
-    userEvent.click(screen.getByRole('checkbox', { name: /dragon/i }));
-    userEvent.click(screen.getByRole('button', { name: /^filter$/i }));
   });
 });

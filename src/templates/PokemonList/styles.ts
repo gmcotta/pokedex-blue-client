@@ -246,17 +246,3 @@ export const ModalHeader = styled.header`
 export const ModalContent = styled.div`
   height: 100%;
 `;
-
-export const SearchSection = styled.form``;
-
-export const FilterSection = styled.form`
-  height: 100%;
-  > button {
-    margin-top: auto;
-  }
-`;
-
-export const CheckboxGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-`;
