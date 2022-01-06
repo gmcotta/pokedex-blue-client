@@ -33,11 +33,14 @@ const SearchForm = () => {
   return (
     <S.Wrapper onSubmit={(event) => handleSearch(event)}>
       <h3>Search</h3>
-      <PokemonSearchNameInput
-        onSelect={(event) => handleSearchInputChange(event)}
-      />
+      <div>
+        <PokemonSearchNameInput
+          placeholder="Select a Pokémon"
+          onSelect={(event) => handleSearchInputChange(event)}
+        />
+        <button type="submit">Search</button>
+      </div>
       {hasError && <span>Please, select a valid Pokémon</span>}
-      <button type="submit">Search</button>
     </S.Wrapper>
   );
 };

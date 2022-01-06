@@ -227,15 +227,17 @@ export const FilterModal = styled(Modal)`
 `;
 
 export const ModalContainer = styled.div`
-  width: 30rem;
-  height: 40rem;
-  background-color: white;
-  border-radius: 0.8rem;
-  padding: 1.6rem;
-  margin: 1.6rem;
-  display: flex;
-  flex-direction: column;
-  z-index: 200;
+  ${({ theme }) => css`
+    width: 30rem;
+    height: 40rem;
+    background-color: ${theme.colors.white};
+    border-radius: 0.8rem;
+    padding: 1.6rem;
+    margin: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 200;
+  `}
 `;
 
 export const ModalHeader = styled.header`

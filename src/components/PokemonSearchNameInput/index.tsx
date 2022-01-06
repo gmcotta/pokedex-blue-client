@@ -1,6 +1,9 @@
+import { HTMLProps, useEffect, useState } from 'react';
+
 import { GetAllPokemonNames_pokemons_data_attributes } from '@/graphql/generated/GetAllPokemonNames';
 import { useAllPokemonNames } from '@/hooks/useAllPokemonNamesQuery';
-import { HTMLProps, useEffect, useState } from 'react';
+
+import * as S from './styles';
 
 type PokemonSearchNameInputProps = HTMLProps<HTMLInputElement>;
 
@@ -19,11 +22,12 @@ const PokemonSearchNameInput = (props: PokemonSearchNameInputProps) => {
   }, [data]);
   return (
     <>
-      <input
+      <S.Input
         type="search"
         name="pokemon-name"
         list="pokemon-names"
         aria-label="search input"
+        placeholder={props.placeholder}
         onChange={props.onChange}
         onSelect={props.onSelect}
       />
