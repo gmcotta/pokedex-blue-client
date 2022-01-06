@@ -21,7 +21,8 @@ const Modal = ({ isOpen, className, children, onClose }: ModalProps) => {
   };
   return (
     <S.Overlay
-      onClick={(evt) => checkClickIsInSafeArea(evt)}
+      aria-label="modal-overlay"
+      onClick={(event) => checkClickIsInSafeArea(event)}
       className={className}
       isOpen={isOpen}
     >
