@@ -27,13 +27,15 @@ const PokemonSearchNameInput = (props: PokemonSearchNameInputProps) => {
         onChange={props.onChange}
         onSelect={props.onSelect}
       />
-      <datalist id="pokemon-names">
+      <datalist id="pokemon-names" aria-label="pokemon name list">
         {names &&
           names.map((value) => (
             <option
               key={value?.pokemonId}
               value={value?.name}
+              label={value?.name}
               data-pokemon-id={value?.pokemonId}
+              data-testid={value?.name}
             />
           ))}
       </datalist>

@@ -30,7 +30,7 @@ describe('<PokemonListTemplate />', () => {
     expect(screen.getByRole('button', { name: /filter modal button/i }))
       .toBeInTheDocument;
     expect(screen.getByRole('button', { name: /settings/i })).toBeInTheDocument;
-    expect(screen.getByLabelText(/pokemon name/i)).toBeInTheDocument;
+    expect(screen.getByLabelText(/^pokemon name$/i)).toBeInTheDocument;
     expect(screen.getByText(/loading.../i)).toBeInTheDocument();
   });
 
