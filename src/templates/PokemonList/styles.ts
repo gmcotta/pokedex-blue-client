@@ -241,6 +241,11 @@ export const ModalContainer = styled.div`
 export const ModalHeader = styled.header`
   display: flex;
   justify-content: end;
+
+  > button {
+    border: none;
+    background: none;
+  }
 `;
 
 export const ModalContent = styled.div`

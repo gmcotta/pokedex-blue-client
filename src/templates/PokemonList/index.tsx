@@ -8,7 +8,7 @@ import { PokemonTypes } from '@/models';
 import formatPokemonName from '@/utils/formatPokemonName';
 
 import * as S from './styles';
-import { FilterIcon, SettingsIcon } from '@/components/Icons';
+import { FilterIcon, SettingsIcon, CloseIcon } from '@/components/Icons';
 import { formatQueryObjectToGraphQLParams } from '@/utils/formatQueryObjectToGraphQLParams';
 import SearchForm from '@/components/forms/SearchForm';
 import FilterForm from '@/components/forms/FilterForm';
@@ -86,7 +86,7 @@ const PokemonListTemplate = () => {
             <S.ModalContainer data-modal-safe-area="true">
               <S.ModalHeader>
                 <button onClick={() => setIsFilterModalOpen(false)}>
-                  Close
+                  <CloseIcon size="small" />
                 </button>
               </S.ModalHeader>
               <S.ModalContent>
