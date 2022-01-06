@@ -91,6 +91,7 @@ const PokemonListTemplate = () => {
               </S.ModalHeader>
               <S.ModalContent>
                 <SearchForm />
+                <hr />
                 <FilterForm />
               </S.ModalContent>
             </S.ModalContainer>

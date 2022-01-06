@@ -2,6 +2,7 @@ import styled, { css, keyframes } from 'styled-components';
 
 import HeaderComponent from '@/components/Header';
 import Modal from '@/components/Modal';
+import { lighten } from 'polished';
 
 export const Wrapper = styled.main`
   display: flex;
@@ -243,6 +244,7 @@ export const ModalContainer = styled.div`
 export const ModalHeader = styled.header`
   display: flex;
   justify-content: end;
+  margin-bottom: 0.8rem;
 
   > button {
     border: none;
@@ -251,5 +253,22 @@ export const ModalHeader = styled.header`
 `;
 
 export const ModalContent = styled.div`
-  height: 100%;
+  ${({ theme }) => css`
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 0.8rem;
+
+    &::-webkit-scrollbar {
+      width: 0.8rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 0.4rem;
+      background-color: ${lighten(0.5, theme.colors.black)};
+    }
+  `}
 `;

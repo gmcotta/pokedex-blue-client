@@ -6,7 +6,7 @@ export const Input = styled.input`
     border-radius: 0.8rem;
     padding: 0.8rem;
     border: 1px solid ${theme.colors.gray};
-    width: 20rem;
+    width: 16rem;
     font-size: 1.6rem;
   `}
 `;

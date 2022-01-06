@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.form`
   ${({ theme }) => css`
+    margin-bottom: 1.6rem;
     > h3 {
       font-size: 2.4rem;
     }
@@ -28,7 +29,7 @@ export const Wrapper = styled.form`
     > span {
       color: ${theme.colors.red};
       display: block;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
     }
   `}
 `;

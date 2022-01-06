@@ -1,4 +1,5 @@
 import { HTMLProps } from 'react';
+import * as S from './styles';
 
 type CheckboxProps = HTMLProps<HTMLInputElement> & {
   label?: string;
@@ -6,10 +7,10 @@ type CheckboxProps = HTMLProps<HTMLInputElement> & {
 
 const Checkbox = ({ id, name, label, ...props }: CheckboxProps) => {
   return (
-    <label htmlFor={id}>
+    <S.Container htmlFor={id}>
       <input type="checkbox" id={id} name={name} {...props} />
-      {label}
-    </label>
+      <span>{label}</span>
+    </S.Container>
   );
 };
 

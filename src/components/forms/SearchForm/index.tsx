@@ -35,7 +35,7 @@ const SearchForm = () => {
       <h3>Search</h3>
       <div>
         <PokemonSearchNameInput
-          placeholder="Select a Pokémon"
+          placeholder="Select..."
           onSelect={(event) => handleSearchInputChange(event)}
         />
         <button type="submit">Search</button>
